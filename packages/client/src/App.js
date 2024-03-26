@@ -8,9 +8,8 @@ import Login from './component/Login';
 function App() {
   return (
     <div className="app">
-      <Login/>
+      <Login />
       Hello
-      
       {/* <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
