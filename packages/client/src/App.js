@@ -1,18 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { LandingPage } from './containers/LandingPage/LandingPage.Container';
-import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
+import Login from './component/Login';
+// import { LandingPage } from './containers/LandingPage/LandingPage.Container';
+// import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
 
 function App() {
   return (
     <div className="app">
-      <Router>
+      <Login/>
+      Hello
+      
+      {/* <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </Router>
+      </Router> */}
     </div>
   );
 }
