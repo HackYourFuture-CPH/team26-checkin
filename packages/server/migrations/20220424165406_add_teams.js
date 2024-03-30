@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable('exampleResources', (table) => {
+  return knex.schema.createTable('Teams', (table) => {
     table.increments();
     table.string('title').notNullable();
     table.datetime('createdAt').defaultTo(knex.fn.now()).notNullable();
@@ -17,5 +17,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  return knex.schema.dropTable('exampleResources');
+  return knex.schema.dropTable('Teams');
 };

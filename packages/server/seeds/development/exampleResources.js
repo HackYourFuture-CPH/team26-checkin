@@ -2,11 +2,11 @@
 
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('exampleResources')
+  return knex('Teams')
     .del()
     .then(() => {
       // Inserts seed entries
-      return knex('exampleResources').insert([
+      return knex('Teams').insert([
         {
           title: 'abc',
         },
