@@ -1,42 +1,8 @@
-// import React, { useEffect, useState } from 'react';
-// import { apiURL } from '../../apiURL';
-// import './LandingPage.Style.css';
-
-// export const LandingPage = () => {
-//   const [exampleResources, setExampleResources] = useState([]);
-//   useEffect(() => {
-//     async function fetchExampleResources() {
-//       const response = await fetch(`${apiURL()}/exampleResources`);
-//       const examples = await response.json();
-//       setExampleResources(examples);
-//     }
-
-//     fetchExampleResources();
-//   }, []);
-
-//   return (
-//     <div className="landing-page-container">
-//       <span>Landing Page</span>
-//       {exampleResources.map((example) => (
-//         <div key={example.id}>{example.title}</div>
-//       ))}
-//     </div>
-//   );
-// };
-
 import React from 'react';
 import Testimonials from '../../components/Login/Testimonials';
 import logo from './logo.svg';
 import { Typography, TextField, Button } from '@mui/material';
-import styled from '@emotion/styled';
 import './LandingPage.Style.css';
-// Import necessary components from Material-UI
-
-const CustomButton = styled(Button)({
-  padding: '14px 20px',
-  backgroundColor: 'var(--primary-color)',
-  color: 'white',
-});
 
 const LandingPageContainer = () => {
   return (
@@ -47,7 +13,7 @@ const LandingPageContainer = () => {
         </Typography>
         <div className="testimonial-section">
           <div className="testimonial-cards">
-            <Testimonials /> {/* Render the Testimonials component */}
+            <Testimonials />
           </div>
         </div>
       </div>
@@ -72,9 +38,9 @@ const LandingPageContainer = () => {
                 required
               />
             </div>
-            <CustomButton className="button" variant="contained" fullWidth>
+            <Button className="button" variant="contained" fullWidth>
               Login
-            </CustomButton>
+            </Button>
           </div>
         </div>
       </div>

@@ -133,6 +133,12 @@ body {
   width: 100%;
 }
 
+.button {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: var(--text-color);
+}
+
 @media (max-width: 1152px) {
   .login-container {
     width: 80%;
