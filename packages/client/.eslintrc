@@ -15,6 +15,12 @@
     "react/state-in-constructor": "off",
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": "off"
+    // "import/no-extraneous-dependencies" : [
+    //   "error",
+    //   {
+    //   "dev dependencies": true
+    //   }
+    // ]
   },
   "overrides": [
     {
