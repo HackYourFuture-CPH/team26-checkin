@@ -30,7 +30,7 @@ const Testimonial = ({ image, text, author }) => {
   return (
     <div className="testimonial-card">
       <img className="images" src={image} alt={author} />
-      <div className="text">
+      <div className="content">
         <Typography variant="body1">{text}</Typography>
         <Typography variant="body2" fontWeight="bold">
           {author}
