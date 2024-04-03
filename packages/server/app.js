@@ -3,7 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const router = require('./api/routes/index');
+const router = require('./api/routes/index'); // Assuming index.js is your main router
 
 const app = express();
 
@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(`/api/`, router);
+// Define route handler for the root /api endpoint
+app.use('/api', router);
 
 module.exports = app;

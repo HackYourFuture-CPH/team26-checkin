@@ -1,14 +1,10 @@
 const express = require('express');
-
 const router = express.Router();
 
-const exampleResources = require('./exampleResources.router');
+const teamMembersRouter = require('./teamMembers.router');
+const teamsRouter = require('./teams.router');
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
-
+// Swagger setup
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -32,6 +28,9 @@ const swaggerDocument = swaggerJsDoc(swaggerOptions);
 // Route for Swagger API Documentation
 router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-router.use('/exampleResources', exampleResources);
+// Mounting the specified routes
+
+router.use('/teamMembers', teamMembersRouter);
+router.use('/teams', teamsRouter);
 
 module.exports = router;

@@ -1,45 +1,45 @@
--- Active: 1711035407082@@127.0.0.1@33306@final_project_database
 -- Active: 1706277702110@@0.0.0.0@3306
 -- Create the database
+CREATE DATABASE IF NOT EXISTS project_checkin2;
 
 -- Use the created database
-USE final_project_database;
+USE project_checkin2;
 
 -- Table for teams
-CREATE TABLE Teams (
+CREATE TABLE IF NOT EXISTS Teams (
     team_id INT AUTO_INCREMENT PRIMARY KEY,
     team_name VARCHAR(255) NOT NULL,
     team_code VARCHAR(10) UNIQUE NOT NULL
 );
 
 -- Table for team members
-CREATE TABLE TeamMembers (
+CREATE TABLE IF NOT EXISTS TeamMembers (
     member_id INT AUTO_INCREMENT PRIMARY KEY,
     team_id INT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    FOREIGN KEY (team_id) REFERENCES Teams(team_id)
+    FOREIGN KEY (team_id) REFERENCES Teams(team_id) ON DELETE CASCADE
 );
 
 -- Table for check-in questions
-CREATE TABLE CheckinQuestions (
+CREATE TABLE IF NOT EXISTS CheckinQuestions (
     question_id INT AUTO_INCREMENT PRIMARY KEY,
     team_id INT,
     question_text VARCHAR(255) NOT NULL,
     frequency ENUM('daily', 'weekly', 'biweekly', 'monthly') NOT NULL,
     next_due_date TIMESTAMP,
-    FOREIGN KEY (team_id) REFERENCES Teams(team_id)
+    FOREIGN KEY (team_id) REFERENCES Teams(team_id) ON DELETE CASCADE
 );
 
 -- Table for responses to check-in questions
-CREATE TABLE CheckinResponses (
+CREATE TABLE IF NOT EXISTS CheckinResponses (
     response_id INT AUTO_INCREMENT PRIMARY KEY,
     question_id INT,
     member_id INT,
     response_text TEXT,
     response_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (question_id) REFERENCES CheckinQuestions(question_id),
-    FOREIGN KEY (member_id) REFERENCES TeamMembers(member_id)
+    FOREIGN KEY (question_id) REFERENCES CheckinQuestions(question_id) ON DELETE CASCADE,
+    FOREIGN KEY (member_id) REFERENCES TeamMembers(member_id) ON DELETE CASCADE
 );
 
 -- Insert sample data for teams

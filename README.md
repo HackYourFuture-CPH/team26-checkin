@@ -15,7 +15,7 @@ You can either choose to install the project using a Docker container that comes
 7. Run this command to build a database with Docker: `docker compose up -d`. The database will be built based on the values in `.env`.
 8. Run `yarn db:setup` to run example migrations and seeds.
 9. Run `yarn dev` to start the server in development mode.
-10. Navigate to http://localhost:5001/api/exampleResources to verify that the API works and you can read data from the database.
+10. Navigate to http://localhost:5001/api/teams to verify that the API works and you can read data from the database.
 
 ### Or without Docker
 
