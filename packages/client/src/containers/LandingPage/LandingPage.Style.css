@@ -4,6 +4,7 @@
   --primary-background-color: #f7f7f7;
   --text-color: #fffff;
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -16,41 +17,33 @@ body {
   justify-content: center; /* Horizontally center content */
   align-items: center; /* Vertically center content */
   height: 100vh; /* Set body height to full viewport height */
-  background: var(--background-color); /* Corrected color codes */
+  background: var(--background-color);
 }
 
-.login-page {
+.landing-page {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100vmax; /* Set width to full viewport width */
-  height: 100vh; /* Set height to full viewport height */
+  width: 100vmax;
+  height: 100vh;
 }
 
 .testimonial-container {
   width: 100vmax;
-  height: 100vh; /* Set height to full viewport height */
   display: flex;
   flex-direction: column;
-  gap: 80px;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 0 80px; /* Removed unnecessary white spaces */
-  overflow-y: auto;
-}
-
-.testimonial-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 0 80px;
+  height: 100vh;
 }
 
 .testimonial-cards {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
+  gap: 24px;
   align-self: stretch;
 }
 

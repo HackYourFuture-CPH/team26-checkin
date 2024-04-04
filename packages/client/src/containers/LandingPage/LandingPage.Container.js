@@ -6,15 +6,13 @@ import './LandingPage.Style.css';
 
 const LandingPageContainer = () => {
   return (
-    <div className="login-page">
+    <div className="landing-page">
       <div className="testimonial-container">
         <Typography className="text-field" variant="h4" color="white">
           Don’t forget to invite teammates!
         </Typography>
-        <div className="testimonial-section">
-          <div className="testimonial-cards">
-            <Testimonials />
-          </div>
+        <div className="testimonial-cards">
+          <Testimonials />
         </div>
       </div>
 
