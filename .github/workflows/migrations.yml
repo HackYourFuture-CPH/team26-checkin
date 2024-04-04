@@ -31,7 +31,7 @@ jobs:
       - name: Use Node.js 17.3.x
         uses: actions/setup-node@v1
         with:
-          node-version: 17.3.x
+          node-version: 18.x
       - run: yarn
         env:
           CI: true
