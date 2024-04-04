@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 # Update to version 3 of actions/checkout
-      - name: Use Node.js 17.x # Note: Direct support for Node.js 20 may not be available yet
+      - name: Use Node.js 18.x # Note: Direct support for Node.js 20 may not be available yet
         uses: actions/setup-node@v2 # Update to version 2 of actions/setup-node
         with:
           node-version: '18.x' # Update to Node.js 17.x
