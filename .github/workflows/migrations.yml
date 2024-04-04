@@ -19,7 +19,7 @@ jobs:
           while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
             sleep 1
           done
-      - name: Use Node.js 17.3.x # Note: Direct support for Node.js 20 may not be available yet
+      - name: Use Node.js 18 # Note: Direct support for Node.js 20 may not be available yet
         uses: actions/setup-node@v2 # Update to version 2 of actions/setup-node
         with:
           node-version: '18.x' # Update to Node.js 17.x
