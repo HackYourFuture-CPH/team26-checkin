@@ -28,7 +28,7 @@ const LandingPageContainer = () => {
                 Enter your team code
               </Typography>
               <TextField
-                className="typography"
+                className="team-code"
                 label="Your code"
                 type="password"
                 variant="outlined"

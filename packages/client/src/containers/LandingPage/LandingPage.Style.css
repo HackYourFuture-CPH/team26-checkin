@@ -1,7 +1,7 @@
 :root {
   --primary-color: #1d4ed8;
   --background-color: linear-gradient(123deg, #1d4ed8 4.32%, #163ba5 54.7%);
-  --primary-background-color: #f7f7f7;
+  --primary-background-color: #fff;
   --text-color: #fffff;
 }
 
@@ -62,7 +62,7 @@ body {
     110deg,
     rgba(247, 247, 247, 0.6) 5.27%,
     rgba(217, 217, 217, 0.3) 100%
-  ); /* Fixed formatting */
+  );
   box-shadow: 0px 11.243px 22.486px 0px rgba(0, 0, 0, 0.05);
   margin-bottom: 4rem;
 }
@@ -122,7 +122,7 @@ body {
 }
 
 .text-field,
-.typography {
+.team-code {
   width: 100%;
 }
 
@@ -154,7 +154,18 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 927px) {
+  .login-container {
+    width: 60%; /* Adjusted width to provide more space */
+    padding: 0 15px; /* Further reduced padding to maximize usable space */
+  }
+  .testimonial-container {
+    width: auto;
+    padding: 0 15px; /* Further reduced padding to maximize usable space */
+  }
+}
+
+@media (max-width: 712px) {
   .login-container {
     width: 60%; /* Corrected width value */
     padding: 0 20px; /* Removed unnecessary white spaces */
