@@ -20,7 +20,7 @@ jobs:
         env:
           CI: true
       - run: |
-          cp ./packages/server/.env.example
+          cp ./packages/server/.env.example ./packages/server/.env
       - name: Build client
         run: yarn workspace client build
       - name: Run client tests
