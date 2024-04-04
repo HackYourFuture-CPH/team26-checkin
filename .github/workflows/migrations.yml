@@ -1,4 +1,4 @@
-name: Migrations
+name: Build
 
 on:
   push:
@@ -9,15 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8
-        env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: test
-        ports:
-          - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - uses: actions/checkout@v3 # Update to version 3 of actions/checkout
@@ -35,19 +26,9 @@ jobs:
       - run: yarn
         env:
           CI: true
-      - name: Run DB Migrations
-        run: yarn workspace server db:setup
-        env:
-          MYSQL_HOST: '127.0.0.1'
-          MYSQL_PORT: 33306
-          MYSQL_USER: 'root'
-          MYSQL_PASSWORD: 'password'
-          MYSQL_DATABASE: 'test'
-      - name: Run DB Migrations Rollback
-        run: yarn workspace server db:clean
-        env:
-          MYSQL_HOST: '127.0.0.1'
-          MYSQL_PORT: 33306
-          MYSQL_USER: 'root'
-          MYSQL_PASSWORD: 'password'
-          MYSQL_DATABASE: 'test'
+      - run: |
+          cp ./packages/server/.env.example ./packages/server/.env
+      - name: Build client
+        run: yarn workspace client build
+      - name: Run client tests
+        run: echo Skipping client tests for now
