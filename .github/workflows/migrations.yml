@@ -31,7 +31,7 @@ jobs:
       - name: Use Node.js 17.3.x # Note: Direct support for Node.js 20 may not be available yet
         uses: actions/setup-node@v2 # Update to version 2 of actions/setup-node
         with:
-          node-version: '17.3.x' # Update to Node.js 17.x
+          node-version: '18.x' # Update to Node.js 17.x
       - run: yarn
         env:
           CI: true
