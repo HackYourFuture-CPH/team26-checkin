@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-
-import LandingPageContainer from './containers/LandingPage/LandingPage.Container';
-import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
+import { LandingPage } from './containers/LandingPage/Landing';
+import { PageNotFound } from './containers/PageNotFound/PageNotFound';
+import { Dashboard } from './containers/LandingPage/Dashboard';
 
 function App() {
   return (
@@ -11,11 +12,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPageContainer />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
-    </div>
+         </div>
   );
 }
-
 export default App;

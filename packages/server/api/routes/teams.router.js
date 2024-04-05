@@ -1,33 +1,31 @@
-/* eslint-disable no-console */
+const teamMembersRouter = require('./teamMembers.router');
+const teamsRouter = require('./teams.router');
 
-const express = require('express');
+// Swagger setup
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
-const router = express.Router();
-const teamsController = require('../controllers/teams.controller');
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      version: '1.0',
+      title: 'Final project',
+      description: 'API documentation for the final project',
+      contact: {},
+    },
+    host: '',
+    basePath: '/api',
+  },
+  securityDefinitions: {},
+  apis: ['./api/routes/*.js'],
+};
 
-// Get all teams
-router.get('/', async (req, res) => {
-  try {
-    const teams = await teamsController.getAllTeams();
-    res.json(teams);
-  } catch (error) {
-    console.error('Error fetching teams:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
+const swaggerDocument = swaggerJsDoc(swaggerOptions);
 
-// Login route
-router.post('/login', async (req, res) => {
-  const { team_code } = req.body;
+// Route for Swagger API Documentation
+router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-  // Check if team code is valid
-  const isValidTeamCode = await teamsController.isValidTeamCode(team_code);
-
-  if (isValidTeamCode) {
-    res.status(200).json({ message: 'Login successful' });
-  } else {
-    res.status(401).json({ message: 'Invalid team code. Please try again.' });
-  }
-});
+// Mounting the specified routesrouter.use('/teamMembers', teamMembersRouter);
+router.use('/teams', teamsRouter);
 
 module.exports = router;
