@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { apiURL } from '../../apiURL';
 import './LandingPage.Style.css';
 
+
 const LandingPage = () => {
+  const navigate = useNavigate();
   const [teamCode, setTeamCode] = useState('');
   const [loginStatus, setLoginStatus] = useState(null);
 
@@ -22,6 +25,8 @@ const LandingPage = () => {
       }
 
       setLoginStatus('success');
+          // Navigate to the dashboard after successful login
+      navigate('/dashboard');
     } catch (error) {
       setLoginStatus('failure');
     }

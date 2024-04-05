@@ -10,5 +10,6 @@ router.get('/', (req, res) => {
 
 // Include your teams router
 router.use('/teams', teams);
+router.use('/teamMembers', teamMembersRouter);
 
 module.exports = router;
