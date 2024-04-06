@@ -1,11 +1,9 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiURL } from '../../apiURL';
 import './LandingPage.Style.css';
 
-
-const LandingPageContainer = () => {
+export const LandingPageContainer = () => {
   const navigate = useNavigate();
   const [teamCode, setTeamCode] = useState('');
   const [loginStatus, setLoginStatus] = useState(null);
@@ -26,7 +24,7 @@ const LandingPageContainer = () => {
       }
 
       setLoginStatus('success');
-          // Navigate to the dashboard after successful login
+      // Navigate to the dashboard after successful login
       navigate('/dashboard');
     } catch (error) {
       setLoginStatus('failure');
@@ -55,5 +53,3 @@ const LandingPageContainer = () => {
     </div>
   );
 };
-
-export default LandingPageContainer;;

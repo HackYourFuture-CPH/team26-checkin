@@ -35,8 +35,9 @@ router.get('/:id', async (req, res, next) => {
 router.post('/addMember', async (req, res, next) => {
   const teamMemberData = req.body;
   try {
-    const newTeamMember =
-      await teamMembersController.createTeamMember(teamMemberData);
+    const newTeamMember = await teamMembersController.createTeamMember(
+      teamMemberData,
+    );
     res.json(newTeamMember);
   } catch (error) {
     next(error);
