@@ -24,7 +24,7 @@ const Dashboard = () => {
       const data = await response.json();
       setTeamMembers(data);
     } catch (error) {
-      console.error('Error fetching team members:', error);
+      console.error(error); // Changed to log the error without specific message
     }
   };
 
@@ -48,7 +48,7 @@ const Dashboard = () => {
       setEditMemberFirstName('');
       setEditMemberLastName('');
     } catch (error) {
-      console.error('Error editing team member:', error);
+      console.error(error); // Changed to log the error without specific message
     }
   };
 
@@ -68,7 +68,7 @@ const Dashboard = () => {
           prevMembers.filter((member) => member.member_id !== id),
         );
       } catch (error) {
-        console.error('Error deleting team member:', error);
+        console.error(error); // Changed to log the error without specific message
       }
     }
   };
@@ -91,7 +91,7 @@ const Dashboard = () => {
       fetchTeamMembers();
       setShowAddModal(false);
     } catch (error) {
-      console.error('Error adding team member:', error);
+      console.error(error); // Changed to log the error without specific message
     }
   };
 
