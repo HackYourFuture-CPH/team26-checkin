@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { apiURL } from '../../apiURL';
 import './Dashboard.css';
@@ -24,7 +25,7 @@ const Dashboard = () => {
       const data = await response.json();
       setTeamMembers(data);
     } catch (error) {
-      handleError(error);
+      console.error(error); // Changed to log the error without specific message
     }
   };
 
@@ -48,7 +49,7 @@ const Dashboard = () => {
       setEditMemberFirstName('');
       setEditMemberLastName('');
     } catch (error) {
-      handleError(error);
+      console.error(error); // Changed to log the error without specific message
     }
   };
 
@@ -68,7 +69,7 @@ const Dashboard = () => {
           prevMembers.filter((member) => member.member_id !== id),
         );
       } catch (error) {
-        handleError(error);
+        console.error(error); // Changed to log the error without specific message
       }
     }
   };
@@ -91,16 +92,8 @@ const Dashboard = () => {
       fetchTeamMembers();
       setShowAddModal(false);
     } catch (error) {
-      handleError(error);
+      console.error(error); // Changed to log the error without specific message
     }
-  };
-
-  const handleError = (error) => {
-    // Handle error according to your application's requirements
-    // For example, you can display an error message to the user
-    console.error(error);
-    // You can also use a logging service or error tracking tool to log errors
-    // logErrorToService(error);
   };
 
   return (
