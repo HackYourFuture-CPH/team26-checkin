@@ -1,7 +1,10 @@
+/* eslint-disable */
 const express = require('express');
 
 const router = express.Router();
 const teams = require('./teams.router');
+
+const teamMembersRouter = express.Router(); 
 
 // Home route
 router.get('/', (req, res) => {
