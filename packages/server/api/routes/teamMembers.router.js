@@ -1,6 +1,10 @@
 const express = require('express');
+
 const router = express.Router();
+
 const teamMembersController = require('../controllers/teamMembers.controller');
+
+const teamMembersRouter = express.Router();
 
 // Get all team members
 router.get('/', async (req, res, next) => {
@@ -30,9 +34,8 @@ router.get('/:id', async (req, res, next) => {
 router.post('/addMember', async (req, res, next) => {
   const teamMemberData = req.body;
   try {
-    const newTeamMember = await teamMembersController.createTeamMember(
-      teamMemberData,
-    );
+    const newTeamMember =
+      await teamMembersController.createTeamMember(teamMemberData);
     res.json(newTeamMember);
   } catch (error) {
     next(error);
@@ -70,4 +73,4 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+module.exports = teamMembersRouter;
