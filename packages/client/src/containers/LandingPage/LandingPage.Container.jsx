@@ -4,7 +4,7 @@ import { apiURL } from '../../apiURL';
 import './LandingPage.Style.css';
 
 
-const LandingPage = () => {
+const LandingPageContainer = () => {
   const navigate = useNavigate();
   const [teamCode, setTeamCode] = useState('');
   const [loginStatus, setLoginStatus] = useState(null);
@@ -55,4 +55,4 @@ const LandingPage = () => {
   );
 };
 
-export { LandingPage };
+export default LandingPageContainer;;
