@@ -8,7 +8,7 @@ const LandingPageContainer = () => {
   return (
     <div className="landing-page">
       <div className="testimonial-container">
-        <Typography className="text-field" variant="h4" color="white">
+        <Typography className="text-field" variant="h4">
           Don’t forget to invite teammates!
         </Typography>
         <div className="testimonial-cards">
@@ -19,7 +19,7 @@ const LandingPageContainer = () => {
       <div className="login-container">
         <img className="logo" src={logo} alt="Logo" />
         <div className="login-details">
-          <Typography variant="h5" fontWeight="bold">
+          <Typography className="login-heading" variant="h5">
             Log in to Teams Check-in
           </Typography>
           <div className="login-action">
