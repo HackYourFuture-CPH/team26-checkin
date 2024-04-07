@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 require('dotenv').config({ path: '../../../.env' });
 
 const winston = require('../api/lib/utils/winston').logger;

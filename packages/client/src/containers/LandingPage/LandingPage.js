@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { apiURL } from '../../apiURL';
 import Testimonials from '../../components/Login/Testimonials';
+import { useNavigate } from 'react-router-dom';
 import logo from './logo.svg';
 import { Typography, TextField, Button } from '@mui/material';
-import './LandingPage.Style.css';
+import './LandingPage.css';
 
-const LandingPageContainer = () => {
+export const LandingPageContainer = () => {
   const [teamCode, setTeamCode] = useState('');
   const [loginStatus, setLoginStatus] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ const LandingPageContainer = () => {
       }
 
       setLoginStatus('success');
+      navigate('/dashboard');
     } catch (error) {
       setLoginStatus('failure');
     }
@@ -79,5 +82,3 @@ const LandingPageContainer = () => {
     </div>
   );
 };
-
-export default LandingPageContainer;
