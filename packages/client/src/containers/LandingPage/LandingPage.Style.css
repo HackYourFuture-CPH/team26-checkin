@@ -1,9 +1,10 @@
 :root {
   --primary-color: #1d4ed8;
   --background-color: linear-gradient(123deg, #1d4ed8 4.32%, #163ba5 54.7%);
-  --primary-background-color: #f7f7f7;
+  --primary-background-color: #fff;
   --text-color: #fffff;
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -16,41 +17,33 @@ body {
   justify-content: center; /* Horizontally center content */
   align-items: center; /* Vertically center content */
   height: 100vh; /* Set body height to full viewport height */
-  background: var(--background-color); /* Corrected color codes */
+  background: var(--background-color);
 }
 
-.login-page {
+.landing-page {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100vmax; /* Set width to full viewport width */
-  height: 100vh; /* Set height to full viewport height */
+  width: 100vmax;
+  height: 100vh;
 }
 
 .testimonial-container {
   width: 100vmax;
-  height: 100vh; /* Set height to full viewport height */
   display: flex;
   flex-direction: column;
-  gap: 80px;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 0 80px; /* Removed unnecessary white spaces */
-  overflow-y: auto;
-}
-
-.testimonial-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 0 80px;
+  height: 100vh;
 }
 
 .testimonial-cards {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
+  gap: 24px;
   align-self: stretch;
 }
 
@@ -69,7 +62,7 @@ body {
     110deg,
     rgba(247, 247, 247, 0.6) 5.27%,
     rgba(217, 217, 217, 0.3) 100%
-  ); /* Fixed formatting */
+  );
   box-shadow: 0px 11.243px 22.486px 0px rgba(0, 0, 0, 0.05);
   margin-bottom: 4rem;
 }
@@ -129,7 +122,7 @@ body {
 }
 
 .text-field,
-.typography {
+.team-code {
   width: 100%;
 }
 
@@ -161,7 +154,18 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 927px) {
+  .login-container {
+    width: 60%; /* Adjusted width to provide more space */
+    padding: 0 15px; /* Further reduced padding to maximize usable space */
+  }
+  .testimonial-container {
+    width: auto;
+    padding: 0 15px; /* Further reduced padding to maximize usable space */
+  }
+}
+
+@media (max-width: 712px) {
   .login-container {
     width: 60%; /* Corrected width value */
     padding: 0 20px; /* Removed unnecessary white spaces */
