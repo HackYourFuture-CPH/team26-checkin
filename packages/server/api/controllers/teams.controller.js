@@ -1,3 +1,5 @@
+/* TODO: This is an example controller to illustrate a server side controller.
+Can be deleted as soon as the first real controller is added. */
 /* eslint-disable no-console */
 
 const knex = require('../../config/db');

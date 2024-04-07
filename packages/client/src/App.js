@@ -5,6 +5,7 @@ import './App.css';
 import { LandingPageContainer } from './containers/LandingPage/LandingPage.Container';
 import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
 import { Dashboard } from './containers/LandingPage/Dashboard';
+import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
 
 function App() {
   return (
