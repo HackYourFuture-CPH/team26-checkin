@@ -1,5 +1,4 @@
 const knex = require('../../config/db');
-const HttpError = require('../lib/utils/http-error');
 
 // Get all team members
 const getAllTeamMembers = async () => {

@@ -1,11 +1,11 @@
 {
-  "extends": ["../../.eslintrc", "react-app", "react-app/jest", "airbnb/hooks"],
+  "extends": ["../../.eslintrc", "react-app", "react-app/jest"],
   "env": {
     "jest": true,
     "browser": true
   },
   "rules": {
-    "no-console": "error",
+    "no-console": "off",
     "react/destructuring-assignment": "off",
     "react/jsx-boolean-value": "off",
     "react/jsx-filename-extension": "off",
@@ -15,6 +15,7 @@
     "react/state-in-constructor": "off",
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": "off",
+<<<<<<< HEAD
     "import/no-cycle": "off",
     "import/named": "off",
     "import/no-named-as-default": "off",
@@ -30,6 +31,18 @@
     //   "dev dependencies": true
     //   }
     // ]
+=======
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.js", "**/*.test.js"]
+      }
+    ],
+    "import/no-unresolved": "off",
+    "import/order": "off",
+    "import/prefer-default-export": "off"
+>>>>>>> main
   },
   "overrides": [
     {

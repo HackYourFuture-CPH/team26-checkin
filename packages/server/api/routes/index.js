@@ -1,6 +1,5 @@
 /* eslint-disable */
 const express = require('express');
-
 const router = express.Router();
 const teams = require('./teams.router');
 const teamMembersRouter = require('./teamMembers.router');
