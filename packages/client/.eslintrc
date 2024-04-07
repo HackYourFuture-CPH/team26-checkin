@@ -17,6 +17,8 @@
     "react/function-component-definition": "off",
     "import/no-cycle": "off",
     "import/named": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "import/order": "off",

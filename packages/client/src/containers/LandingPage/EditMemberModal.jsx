@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EditMemberModal = ({
+export const EditMemberModal = ({
   showEditModal,
   editMemberId,
   editMemberFirstName,
@@ -44,5 +44,3 @@ EditMemberModal.propTypes = {
   setEditMemberLastName: PropTypes.func.isRequired,
   handleEditMember: PropTypes.func.isRequired,
 };
-
-export default EditMemberModal;

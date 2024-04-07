@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { apiURL } from '../../apiURL';
 import './Dashboard.css';
-import AddTeamMemberModal from './AddTeamMemberModal';
-import EditMemberModal from './EditMemberModal';
+import { AddTeamMemberModal } from './AddTeamMemberModal';
+import { EditMemberModal } from './EditMemberModal';
 
 const Dashboard = () => {
   const [teamMembers, setTeamMembers] = useState([]);

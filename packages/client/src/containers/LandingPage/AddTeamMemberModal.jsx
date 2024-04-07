@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AddTeamMemberModal = ({
+export const AddTeamMemberModal = ({
   showAddModal,
   setShowAddModal,
   newMemberFirstName,
@@ -47,5 +47,3 @@ AddTeamMemberModal.propTypes = {
   setNewMemberLastName: PropTypes.func.isRequired,
   handleAddMember: PropTypes.func.isRequired,
 };
-
-export default AddTeamMemberModal;

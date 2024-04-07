@@ -17,6 +17,7 @@
     "import/no-cycle": "off",
     "import/no-unresolved": "off",
     "import/order": "off",
+    "import/no-named-as-default": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "no-console": "error",
