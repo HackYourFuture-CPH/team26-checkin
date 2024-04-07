@@ -15,7 +15,6 @@
     "react/state-in-constructor": "off",
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": "off",
-<<<<<<< HEAD
     "import/no-cycle": "off",
     "import/named": "off",
     "import/no-named-as-default": "off",
@@ -31,18 +30,6 @@
     //   "dev dependencies": true
     //   }
     // ]
-=======
-    "import/extensions": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": ["**/*.stories.js", "**/*.test.js"]
-      }
-    ],
-    "import/no-unresolved": "off",
-    "import/order": "off",
-    "import/prefer-default-export": "off"
->>>>>>> main
   },
   "overrides": [
     {
