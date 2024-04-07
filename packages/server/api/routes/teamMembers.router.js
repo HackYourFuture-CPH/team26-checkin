@@ -5,8 +5,6 @@ const router = express.Router();
 
 const teamMembersController = require('../controllers/teamMembers.controller');
 
-const teamMembersRouter = express.Router();
-
 // Get all team members
 router.get('/', async (req, res, next) => {
   try {
@@ -75,4 +73,4 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-module.exports = teamMembersRouter;
+module.exports = router;

@@ -14,6 +14,7 @@
         "devDependencies": ["**/*.stories.js", "**/*.test.js"]
       }
     ],
+    "import/no-cycle": "off",
     "import/no-unresolved": "off",
     "import/order": "off",
     "import/prefer-default-export": "off",

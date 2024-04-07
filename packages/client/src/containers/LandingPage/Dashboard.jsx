@@ -1,7 +1,9 @@
-/* eslint-disable */
+/* eslint-disable  */
 import React, { useEffect, useState } from 'react';
 import { apiURL } from '../../apiURL';
 import './Dashboard.css';
+import AddTeamMemberModal from './AddTeamMemberModal';
+import EditMemberModal from './EditMemberModal';
 
 const Dashboard = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -128,29 +130,15 @@ const Dashboard = () => {
       <button type="button" onClick={() => setShowAddModal(true)}>
         Add Team Member
       </button>
-      {showAddModal && (
-        <div>
-          <h2>Add Team Member</h2>
-          <input
-            type="text"
-            value={newMemberFirstName}
-            onChange={(e) => setNewMemberFirstName(e.target.value)}
-            placeholder="First Name"
-          />
-          <input
-            type="text"
-            value={newMemberLastName}
-            onChange={(e) => setNewMemberLastName(e.target.value)}
-            placeholder="Last Name"
-          />
-          <button type="button" onClick={handleAddMember}>
-            Add Member
-          </button>
-          <button type="button" onClick={() => setShowAddModal(false)}>
-            Cancel
-          </button>
-        </div>
-      )}
+      <AddTeamMemberModal
+        showAddModal={showAddModal}
+        setShowAddModal={setShowAddModal}
+        newMemberFirstName={newMemberFirstName}
+        setNewMemberFirstName={setNewMemberFirstName}
+        newMemberLastName={newMemberLastName}
+        setNewMemberLastName={setNewMemberLastName}
+        handleAddMember={handleAddMember}
+      />
       {editMemberId && (
         <div>
           <h2>Edit Member</h2>
