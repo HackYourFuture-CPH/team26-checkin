@@ -46,5 +46,5 @@
       "yarn stylelint:check"
     ]
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@1.22.22"
 }
