@@ -7,12 +7,6 @@
     "consistent-return": "off",
     "func-names": "off",
     "import/extensions": "off",
-    //"import/no-extraneous-dependencies": [
-    //  "error",
-     // {
-     //   "devDependencies": ["**/*.stories.js", "**/*.test.js"]
-     // }
-   // ],
     "import/no-cycle": "off",
     "import/no-unresolved": "off",
     "import/order": "off",
