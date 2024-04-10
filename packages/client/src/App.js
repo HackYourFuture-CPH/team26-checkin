@@ -5,6 +5,7 @@ import './App.css';
 import { LandingPageContainer } from './containers/LandingPage/LandingPage';
 import { Dashboard } from './containers/LandingPage/Dashboard';
 import { PageNotFound } from './containers/PageNotFound/PageNotFound';
+import { CheckinQuestions } from './containers/LandingPage/CheckinQuestionsPage/CheckinQuestions';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPageContainer />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/questions" element={<CheckinQuestions />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>

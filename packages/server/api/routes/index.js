@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const teams = require('./teams.router');
 const teamMembersRouter = require('./teamMembers.router');
-
+const checkinQuestionsRouter = require('./checkinQuestions.router');
 // const teamMembersRouter = express.Router();
 
 // Home route
@@ -14,5 +14,6 @@ router.get('/', (req, res) => {
 // Include your teams router
 router.use('/teams', teams);
 router.use('/teamMembers', teamMembersRouter);
+router.use('/checkinQuestions', checkinQuestionsRouter);
 
 module.exports = router;
