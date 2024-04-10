@@ -23,6 +23,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.29.1",
@@ -47,5 +48,8 @@
       "yarn stylelint:check"
     ]
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "eslint-config-react-app": "^7.0.1"
+  }
 }
