@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { apiURL } from '../../../apiURL';
-//import './CheckinQuestions.css';
 import { AddCheckinQuestionModal } from './AddCheckinQuestionModal';
 import { EditCheckinQuestionModal } from './EditCheckinQuestionModal';
+import { Button, Typography } from '@mui/material';
 
 const CheckinQuestions = () => {
-  const [checkinQuestions, setCheckinQuestions] = useState([]);
+  const [checkinQuestions, setCheckinQuestions] = useState(null);
   const [editQuestionId, setEditQuestionId] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [newQuestionText, setNewQuestionText] = useState('');
@@ -25,6 +25,7 @@ const CheckinQuestions = () => {
       setCheckinQuestions(data);
     } catch (error) {
       console.error('Error fetching checkin questions:', error.message);
+      setCheckinQuestions([]);
     }
   };
 
@@ -35,7 +36,7 @@ const CheckinQuestions = () => {
 
   const handleAddQuestion = () => {
     setShowAddModal(true);
-    setEditQuestionId(null); // Reset editQuestionId when adding a new question
+    setEditQuestionId(null);
   };
 
   const handleSaveEdit = async (questionId) => {
@@ -62,16 +63,13 @@ const CheckinQuestions = () => {
 
   const handleAdd = async () => {
     try {
-      const response = await fetch(
-        `${apiURL()}/checkinQuestions/addCheckinQuestion`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ question_text: newQuestionText }),
+      const response = await fetch(`${apiURL()}/checkinQuestions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        body: JSON.stringify({ question_text: newQuestionText }),
+      });
       if (!response.ok) {
         throw new Error('Failed to add question');
       }
@@ -90,9 +88,7 @@ const CheckinQuestions = () => {
       try {
         const response = await fetch(
           `${apiURL()}/checkinQuestions/${questionId}`,
-          {
-            method: 'DELETE',
-          },
+          { method: 'DELETE' },
         );
         if (!response.ok) {
           throw new Error('Failed to delete checkin question');
@@ -104,38 +100,46 @@ const CheckinQuestions = () => {
     }
   };
 
+  if (checkinQuestions === null) {
+    return <Typography>Loading Questions...</Typography>;
+  }
+
   return (
     <div>
-      <h1>Checkin Questions</h1>
-      <div>
-        <ul>
-          {checkinQuestions.map((question) => (
-            <li key={question.question_id}>
-              {question.question_text}
-              {editQuestionId !== question.question_id && (
-                <>
-                  <button
-                    onClick={() =>
-                      handleEditQuestion(
-                        question.question_id,
-                        question.question_text,
-                      )
-                    }
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeleteQuestion(question.question_id)}
-                  >
-                    Delete
-                  </button>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <button onClick={handleAddQuestion}>Add Question</button>
+      <Typography variant="h4" component="h1">
+        Checkin Questions
+      </Typography>
+      <ul>
+        {checkinQuestions.map((question) => (
+          <li key={question.question_id}>
+            <Typography>{question.question_text}</Typography>
+            {editQuestionId !== question.question_id && (
+              <>
+                <Button
+                  onClick={() =>
+                    handleEditQuestion(
+                      question.question_id,
+                      question.question_text,
+                    )
+                  }
+                  color="primary"
+                >
+                  Edit
+                </Button>
+                <Button
+                  onClick={() => handleDeleteQuestion(question.question_id)}
+                  color="secondary"
+                >
+                  Delete
+                </Button>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+      <Button onClick={handleAddQuestion} variant="contained" color="primary">
+        Add Question
+      </Button>
       {showAddModal && (
         <AddCheckinQuestionModal
           showAddModal={showAddModal}

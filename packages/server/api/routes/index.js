@@ -4,7 +4,6 @@ const router = express.Router();
 const teams = require('./teams.router');
 const teamMembersRouter = require('./teamMembers.router');
 const checkinQuestionsRouter = require('./checkinQuestions.router');
-// const teamMembersRouter = express.Router();
 
 // Home route
 router.get('/', (req, res) => {

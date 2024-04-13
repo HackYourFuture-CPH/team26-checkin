@@ -9,7 +9,7 @@ const getAllCheckinQuestions = async () => {
   }
 };
 
-// Get checkin questions by ID
+// Get checkin question by ID
 const getCheckinQuestionsById = async (questionId) => {
   try {
     return await knex('CheckinQuestions')
@@ -21,10 +21,32 @@ const getCheckinQuestionsById = async (questionId) => {
   }
 };
 
+// Find a checkin question by text
+const findCheckinQuestionByText = async (questionText) => {
+  try {
+    return await knex('CheckinQuestions')
+      .select('*')
+      .where({ question_text: questionText })
+      .first();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 // Create a new checkin question
 const createCheckinQuestion = async (checkinQuestionData) => {
   try {
-    return await knex('CheckinQuestions').insert(checkinQuestionData);
+    const existingQuestion = await findCheckinQuestionByText(
+      checkinQuestionData.question_text,
+    );
+    if (existingQuestion) {
+      throw new Error('This checkin question already exists');
+    }
+
+    const [newQuestionId] = await knex('CheckinQuestions')
+      .insert(checkinQuestionData)
+      .returning('question_id');
+    return getCheckinQuestionsById(newQuestionId); // Return the newly created question
   } catch (error) {
     throw new Error(error.message);
   }
@@ -58,4 +80,5 @@ module.exports = {
   createCheckinQuestion,
   editCheckinQuestion,
   deleteCheckinQuestion,
+  findCheckinQuestionByText,
 };
