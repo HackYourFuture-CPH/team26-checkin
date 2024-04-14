@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+
 import { apiURL } from '../../apiURL';
-import './Dashboard.css';
 import { AddTeamMemberModal } from './AddTeamMemberModal';
 import { EditMemberModal } from './EditMemberModal';
+import { useTeamIdContext } from '../../hooks/contextHook';
+
+import './Dashboard.css';
 
 const Dashboard = () => {
-  const { teamCode } = useParams(); // This matches the URL parameter
+  const { teamId: teamCode } = useTeamIdContext();
   const [teamMembers, setTeamMembers] = useState([]);
   const [editMemberId, setEditMemberId] = useState(null);
   const [editMemberFirstName, setEditMemberFirstName] = useState('');
