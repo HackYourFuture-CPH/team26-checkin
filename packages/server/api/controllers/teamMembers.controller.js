@@ -1,9 +1,13 @@
 const knex = require('../../config/db');
 
-// Get all team members
-const getAllTeamMembers = async () => {
+// Get all team members by team code
+const getTeamMembersByCode = async (teamCode) => {
   try {
-    return await knex('TeamMembers').select('*');
+    const team = await knex('Teams').where({ team_code: teamCode }).first();
+    if (!team) throw new Error('Team not found');
+    return await knex('TeamMembers')
+      .where({ team_id: team.team_id })
+      .select('*');
   } catch (error) {
     throw new Error(error.message);
   }
@@ -12,10 +16,12 @@ const getAllTeamMembers = async () => {
 // Get team member by ID
 const getTeamMemberById = async (memberId) => {
   try {
-    return await knex('TeamMembers')
+    const member = await knex('TeamMembers')
       .select('*')
       .where({ member_id: memberId })
       .first();
+    if (!member) throw new Error('Team member not found');
+    return member;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -24,7 +30,17 @@ const getTeamMemberById = async (memberId) => {
 // Create a new team member
 const createTeamMember = async (teamMemberData) => {
   try {
-    return await knex('TeamMembers').insert(teamMemberData);
+    const { team_code, first_name, last_name } = teamMemberData;
+    const team = await knex('Teams').where({ team_code }).first();
+    if (!team) throw new Error('Team not found');
+
+    const newMemberId = await knex('TeamMembers').insert({
+      team_id: team.team_id,
+      first_name,
+      last_name,
+    });
+
+    return await getTeamMemberById(newMemberId[0]); // Assuming insert returns the ID of the new record
   } catch (error) {
     throw new Error(error.message);
   }
@@ -33,9 +49,12 @@ const createTeamMember = async (teamMemberData) => {
 // Update a team member by ID
 const editTeamMember = async (memberId, updatedTeamMemberData) => {
   try {
-    return await knex('TeamMembers')
+    const updateCount = await knex('TeamMembers')
       .where({ member_id: memberId })
-      .update(updatedTeamMemberData); // Issue is here
+      .update(updatedTeamMemberData);
+    if (updateCount === 0)
+      throw new Error('Team member not found or update failed');
+    return await getTeamMemberById(memberId);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -44,14 +63,18 @@ const editTeamMember = async (memberId, updatedTeamMemberData) => {
 // Delete a team member by ID
 const deleteTeamMember = async (memberId) => {
   try {
-    return await knex('TeamMembers').where({ member_id: memberId }).del();
+    const deleteCount = await knex('TeamMembers')
+      .where({ member_id: memberId })
+      .del();
+    if (deleteCount === 0) throw new Error('No team member found to delete');
+    return deleteCount; // Returning the count of deleted records
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
 module.exports = {
-  getAllTeamMembers,
+  getTeamMembersByCode,
   getTeamMemberById,
   createTeamMember,
   editTeamMember,

@@ -27,7 +27,7 @@ export const LandingPageContainer = () => {
       }
 
       setLoginStatus('success');
-      navigate('/dashboard');
+      navigate('/dashboard/:teamCode');
     } catch (error) {
       setLoginStatus('failure');
     }

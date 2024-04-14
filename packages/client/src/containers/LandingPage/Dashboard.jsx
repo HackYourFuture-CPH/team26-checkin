@@ -1,11 +1,12 @@
-/* eslint-disable  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import { apiURL } from '../../apiURL';
 import './Dashboard.css';
 import { AddTeamMemberModal } from './AddTeamMemberModal';
 import { EditMemberModal } from './EditMemberModal';
 
 const Dashboard = () => {
+  const { teamCode } = useParams(); // This matches the URL parameter
   const [teamMembers, setTeamMembers] = useState([]);
   const [editMemberId, setEditMemberId] = useState(null);
   const [editMemberFirstName, setEditMemberFirstName] = useState('');
@@ -13,45 +14,59 @@ const Dashboard = () => {
   const [newMemberFirstName, setNewMemberFirstName] = useState('');
   const [newMemberLastName, setNewMemberLastName] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
-  useEffect(() => {
-    fetchTeamMembers();
-  }, []);
-
-  const fetchTeamMembers = async () => {
+  const fetchTeamMembers = useCallback(async () => {
     try {
-      const response = await fetch(`${apiURL()}/teamMembers`);
+      const response = await fetch(
+        `${apiURL()}/teamMembers/${teamCode}/members`,
+      );
       if (!response.ok) {
         throw new Error('Failed to fetch team members');
       }
       const data = await response.json();
       setTeamMembers(data);
     } catch (error) {
-      console.error(error); // Changed to log the error without specific message
+      console.error('Error fetching team members:', error);
     }
+  }, [teamCode]);
+
+  useEffect(() => {
+    fetchTeamMembers();
+  }, [teamCode, fetchTeamMembers]);
+
+  const handleEditClick = (member) => {
+    setEditMemberId(member.member_id);
+    setEditMemberFirstName(member.first_name);
+    setEditMemberLastName(member.last_name);
+    setShowEditModal(true);
   };
 
   const handleEditMember = async () => {
     try {
-      const response = await fetch(`${apiURL()}/teamMembers/${editMemberId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${apiURL()}/teamMembers/${teamCode}/members/${editMemberId}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            first_name: editMemberFirstName,
+            last_name: editMemberLastName,
+          }),
         },
-        body: JSON.stringify({
-          first_name: editMemberFirstName,
-          last_name: editMemberLastName,
-        }),
-      });
+      );
       if (!response.ok) {
         throw new Error('Failed to edit team member');
       }
       fetchTeamMembers();
+      setShowEditModal(false);
       setEditMemberId(null);
       setEditMemberFirstName('');
       setEditMemberLastName('');
     } catch (error) {
-      console.error(error); // Changed to log the error without specific message
+      console.error('Error:', error);
     }
   };
 
@@ -61,9 +76,12 @@ const Dashboard = () => {
     );
     if (confirmDelete) {
       try {
-        const response = await fetch(`${apiURL()}/teamMembers/${id}`, {
-          method: 'DELETE',
-        });
+        const response = await fetch(
+          `${apiURL()}/teamMembers/${teamCode}/members/${id}`,
+          {
+            method: 'DELETE',
+          },
+        );
         if (!response.ok) {
           throw new Error('Failed to delete team member');
         }
@@ -71,30 +89,35 @@ const Dashboard = () => {
           prevMembers.filter((member) => member.member_id !== id),
         );
       } catch (error) {
-        console.error(error); // Changed to log the error without specific message
+        console.error('Error:', error);
       }
     }
   };
 
   const handleAddMember = async () => {
     try {
-      const response = await fetch(`${apiURL()}/teamMembers/addMember`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${apiURL()}/teamMembers/${teamCode}/members`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            first_name: newMemberFirstName,
+            last_name: newMemberLastName,
+          }),
         },
-        body: JSON.stringify({
-          first_name: newMemberFirstName,
-          last_name: newMemberLastName,
-        }),
-      });
+      );
       if (!response.ok) {
         throw new Error('Failed to add team member');
       }
       fetchTeamMembers();
       setShowAddModal(false);
+      setNewMemberFirstName('');
+      setNewMemberLastName('');
     } catch (error) {
-      console.error(error); // Changed to log the error without specific message
+      console.error('Error:', error);
     }
   };
 
@@ -107,14 +130,7 @@ const Dashboard = () => {
           {teamMembers.map((member) => (
             <li key={member.member_id}>
               {member.first_name} {member.last_name}
-              <button
-                type="button"
-                onClick={() => {
-                  setEditMemberId(member.member_id);
-                  setEditMemberFirstName(member.first_name);
-                  setEditMemberLastName(member.last_name);
-                }}
-              >
+              <button type="button" onClick={() => handleEditClick(member)}>
                 Edit
               </button>
               <button
@@ -139,26 +155,15 @@ const Dashboard = () => {
         setNewMemberLastName={setNewMemberLastName}
         handleAddMember={handleAddMember}
       />
-      {editMemberId && (
-        <div>
-          <h2>Edit Member</h2>
-          <input
-            type="text"
-            value={editMemberFirstName}
-            onChange={(e) => setEditMemberFirstName(e.target.value)}
-            placeholder="First Name"
-          />
-          <input
-            type="text"
-            value={editMemberLastName}
-            onChange={(e) => setEditMemberLastName(e.target.value)}
-            placeholder="Last Name"
-          />
-          <button type="button" onClick={handleEditMember}>
-            Save
-          </button>
-        </div>
-      )}
+      <EditMemberModal
+        showEditModal={showEditModal}
+        editMemberId={editMemberId}
+        editMemberFirstName={editMemberFirstName}
+        setEditMemberFirstName={setEditMemberFirstName}
+        editMemberLastName={editMemberLastName}
+        setEditMemberLastName={setEditMemberLastName}
+        handleEditMember={handleEditMember}
+      />
     </div>
   );
 };
