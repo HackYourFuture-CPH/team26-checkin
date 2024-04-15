@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './AddTeamMemberModal.css';
+import { Typography } from '@mui/material';
 
 export const AddTeamMemberModal = ({
   showAddModal,
@@ -14,26 +16,33 @@ export const AddTeamMemberModal = ({
     return null;
   }
   return (
-    <div>
-      <h2>Add Team Member</h2>
-      <input
-        type="text"
-        value={newMemberFirstName}
-        onChange={(e) => setNewMemberFirstName(e.target.value)}
-        placeholder="First Name"
-      />
-      <input
-        type="text"
-        value={newMemberLastName}
-        onChange={(e) => setNewMemberLastName(e.target.value)}
-        placeholder="Last Name"
-      />
-      <button type="button" onClick={handleAddMember}>
-        Add Member
-      </button>
-      <button type="button" onClick={() => setShowAddModal(false)}>
-        Cancel
-      </button>
+    <div className="container">
+      <Typography variant="body1">Add Team Member</Typography>
+      <div className="add-member">
+        <input
+          type="text"
+          value={newMemberFirstName}
+          onChange={(e) => setNewMemberFirstName(e.target.value)}
+          placeholder="First Name"
+        />
+        <input
+          type="text"
+          value={newMemberLastName}
+          onChange={(e) => setNewMemberLastName(e.target.value)}
+          placeholder="Last Name"
+        />
+
+        <button className="add-button" type="button" onClick={handleAddMember}>
+          Add Member
+        </button>
+        <button
+          className="cancel-button"
+          type="button"
+          onClick={() => setShowAddModal(false)}
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };
