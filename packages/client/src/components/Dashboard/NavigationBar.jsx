@@ -7,8 +7,6 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import logo from './logo-dark.svg';
 
-// NavigationItem component for individual navigation items
-// NavigationItem component for individual navigation items
 const NavigationItem = ({ icon, name }) => (
   <div style={{ marginBottom: '20px' }}>
     <Button className="menu-icon" style={{ textTransform: 'none', color: name !== 'Dashboard' ? 'rgba(255, 255, 255, 0.5)' : 'white' }}>
@@ -19,10 +17,10 @@ const NavigationItem = ({ icon, name }) => (
 );
 
 
-// Prop validation for NavigationItem component
+
 NavigationItem.propTypes = {
-  icon: PropTypes.node.isRequired, // Require icon prop of type node
-  name: PropTypes.string.isRequired, // Require name prop of type string
+  icon: PropTypes.node.isRequired, 
+  name: PropTypes.string.isRequired
 };
 
 // LogoutButton component for the logout button
