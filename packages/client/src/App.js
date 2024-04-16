@@ -2,8 +2,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './containers/Dashboard/Dashboard';
+// TODO: put back comment after the login flow is down
 // import { LandingPageContainer } from './containers/LandingPage/LandingPage';
 import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
+// TODO: put back comment after the Dashboard backend flow is down
 // import { Dashboard }from './containers/Dashboard/Dashboard';
 
 
