@@ -1,11 +1,12 @@
 :root {
     --primary-color: #1d4ed8;
     --background-color: #F7F7F7;;
-    --primary-background-color: #fff;
+    --primary-background-color: #fffff;
     --text-color: #fffff;
     --light-subheading-text-color:#64748B;
     --primary-disabled-text:#C2C0FF;
     --light-sub-text-color:#A0ABBB;
+    --fade-color: rgba(255, 255, 255, 0.5);
 }
   
   * {
@@ -22,14 +23,13 @@
   .dashboard-container {
     display: flex;
   } 
-
+/* 
 .left-nav-bar-container {
     display: inline-flex;
     padding: 40px 20px;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 80px;
-    flex-shrink: 0;
     border-radius: 0px 40px 40px 0px;
     background: var(--primary-color);
     height: 100vh;
@@ -38,9 +38,11 @@
   .left-nav-bar {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Add space between top and bottom sections */
+    justify-content: space-between; 
     align-items: flex-start;
     flex-shrink: 0;
+    flex-grow: 1;
+    margin-top: 20px;
   }
   
   .left-nav-bar-top {
@@ -50,16 +52,71 @@
   }
 
   .left-nav-bar-top .menu-icon:nth-child(1) {
-    color: white; /* Change color to white for the first menu item */
+    color: white; 
   }
 
   .left-nav-bar-bottom {
     display: flex;
     align-items: center;
-    margin-top: 14em;
+ 
+  } */
+
+  .left-nav-bar-container{
+    display: flex;
+    padding: 40px 0px;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 80px;
+    flex-shrink: 0;
+    border-radius: 0px 40px 40px 0px;
+    background: var(--primary-color);
+    /* height: 100vh; */
   }
   
-  .menu-icon {
+.left-nav-bar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-grow: 1;
+    /* margin-bottom: 20px; */
+}
+
+.left-nav-bar-top{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left-nav-bar-top .menu-icon:nth-child(1) {
+  color: white; 
+}
+
+.menu-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18.204px;
+  flex: 1 0 0;
+  color: var(--fade-color);
+}
+
+.dashboard {
+  color: #FFFFFF; /* White color for Dashboard */
+}
+
+.fade {
+  color: var(--fade-color); /* Semi-transparent white color for Questions and Reports */
+}
+.left-nav-bar-bottom{
+  display: flex;
+  align-items: center;
+}
+
+
+  /* .menu-icon {
     display: flex;
     padding: 40px 24px 40px 0px;
     justify-content: center;
@@ -67,7 +124,8 @@
     gap: 18.204px;
     flex: 1 0 0;
     color: var(--primary-disabled-text);
-}
+    margin-block-end: 10px;
+} */
   
 .content-container{
     display: flex;

@@ -1,17 +1,14 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import NavigationBar from '../../components/Dashboard/NavigationBar';
-import logo from './logo-dark.svg';
 import placeholder from './placeholder.png';
 import './Dashboard.css';
 
 const Dashboard = () => {
   return (
     <div className= "dashboard-container">
-      <div className="left-nav-bar-container">
-        <img className="logo" src={logo} alt="Logo" />
         <NavigationBar />
-      </div>
+        
       <div className="content-container">
         <div className="top-nav-bar">
           <div className="heading-text">
