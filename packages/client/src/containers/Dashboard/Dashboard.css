@@ -28,7 +28,6 @@
     display: flex;
     padding: 40px 0px;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
     gap: 80px;
     flex-shrink: 0;
@@ -43,7 +42,6 @@
   align-items: flex-start;
   flex-shrink: 0;
   flex-grow: 1;
-    /* margin-bottom: 20px; */
 }
 
 .left-nav-bar-top{
@@ -66,7 +64,7 @@
 }
 
 .dashboard {
-  color: #FFFFFF; /* White color for Dashboard */
+  color: var(--text-color); 
 }
 
 .fade {
