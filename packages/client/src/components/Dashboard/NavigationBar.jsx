@@ -16,8 +16,6 @@ const NavigationItem = ({ icon, name }) => (
   </div>
 );
 
-
-
 NavigationItem.propTypes = {
   icon: PropTypes.node.isRequired, 
   name: PropTypes.string.isRequired
