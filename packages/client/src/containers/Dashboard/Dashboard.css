@@ -1,0 +1,141 @@
+:root {
+  --primary-color: #1d4ed8;
+  --background-color: #f7f7f7;
+  --primary-background-color: #fffff;
+  --text-color: #fffff;
+  --light-subheading-text-color: #64748b;
+  --primary-disabled-text: #c2c0ff;
+  --light-sub-text-color: #a0abbb;
+  --fade-color: rgba(255, 255, 255, 0.5);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+.dashboard-container {
+  display: flex;
+}
+
+.left-nav-bar-container {
+  display: flex;
+  padding: 40px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  flex-shrink: 0;
+  border-radius: 0px 40px 40px 0px;
+  background: var(--primary-color);
+}
+
+.left-nav-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.left-nav-bar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left-nav-bar-top .menu-icon:nth-child(1) {
+  color: white;
+}
+
+.menu-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18.204px;
+  flex: 1 0 0;
+  color: var(--fade-color);
+}
+
+.dashboard {
+  color: var(--text-color);
+}
+
+.fade {
+  color: var(--fade-color);
+}
+
+.left-nav-bar-bottom {
+  display: flex;
+  align-items: center;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 80px;
+  flex-shrink: 0;
+  flex-grow: 1;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.top-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  padding: 40px 80px;
+  background: var(--primary-background-color);
+}
+
+.heading-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1 0 0;
+}
+
+.sub-heading {
+  color: var(--light-subheading-text-color);
+}
+
+.subtext {
+  color: var(--light-sub-text-color);
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.placeholder-image {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  border: 3px solid #1d4ed8;
+  background: linear-gradient(
+      0deg,
+      rgba(217, 217, 217, 0.1) 0%,
+      rgba(217, 217, 217, 0.1) 100%
+    ),
+    lightgray 50% / cover no-repeat;
+}
+
+.name-mail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
