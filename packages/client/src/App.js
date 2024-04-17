@@ -4,7 +4,6 @@ import Dashboard from './containers/Dashboard/Dashboard';
 // TODO: put back comment after the login flow is down
 // import { LandingPageContainer } from './containers/LandingPage/LandingPage';
 import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
-// TODO: put back comment after the Dashboard backend flow is down
 // import { Dashboard }from './containers/Dashboard/Dashboard';
 import { CheckinQuestions } from './containers/LandingPage/CheckinQuestionsPage/CheckinQuestions';
 import { TeamIdContextProvider } from './hooks/contextHook';
