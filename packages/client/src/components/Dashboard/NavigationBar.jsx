@@ -9,7 +9,13 @@ import logo from './logo-dark.svg';
 
 const NavigationItem = ({ icon, name }) => (
   <div style={{ marginBottom: '20px' }}>
-    <Button className="menu-icon" style={{ textTransform: 'none', color: name !== 'Dashboard' ? 'rgba(255, 255, 255, 0.5)' : 'white' }}>
+    <Button
+      className="menu-icon"
+      style={{
+        textTransform: 'none',
+        color: name !== 'Dashboard' ? 'rgba(255, 255, 255, 0.5)' : 'white',
+      }}
+    >
       {icon}
       <Typography variant="body1">{name}</Typography>
     </Button>
@@ -17,8 +23,8 @@ const NavigationItem = ({ icon, name }) => (
 );
 
 NavigationItem.propTypes = {
-  icon: PropTypes.node.isRequired, 
-  name: PropTypes.string.isRequired
+  icon: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 // LogoutButton component for the logout button
@@ -36,16 +42,25 @@ const NavigationBar = () => {
       <div className="left-nav-bar">
         <div className="left-nav-bar-top">
           {/* Reusing NavigationItem component */}
-          <NavigationItem icon={<HomeOutlinedIcon fontSize="large" />} name="Dashboard" />
-          <NavigationItem icon={<HelpOutlineOutlinedIcon fontSize="large" />} name="Questions" />
-          <NavigationItem icon={<DescriptionOutlinedIcon fontSize="large" />} name="Reports" />
+          <NavigationItem
+            icon={<HomeOutlinedIcon fontSize="large" />}
+            name="Dashboard"
+          />
+          <NavigationItem
+            icon={<HelpOutlineOutlinedIcon fontSize="large" />}
+            name="Questions"
+          />
+          <NavigationItem
+            icon={<DescriptionOutlinedIcon fontSize="large" />}
+            name="Reports"
+          />
         </div>
-        <div className="left-nav-bar-bottom">    
+        <div className="left-nav-bar-bottom">
           <LogoutButton />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default NavigationBar;
