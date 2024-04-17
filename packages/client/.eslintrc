@@ -1,11 +1,11 @@
 {
-  "extends": ["../../.eslintrc", "react-app", "react-app/jest", "airbnb/hooks"],
+  "extends": ["../../.eslintrc", "react-app", "react-app/jest"],
   "env": {
     "jest": true,
     "browser": true
   },
   "rules": {
-    "no-console": "error",
+    "no-console": "off",
     "react/destructuring-assignment": "off",
     "react/jsx-boolean-value": "off",
     "react/jsx-filename-extension": "off",

@@ -20,7 +20,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3 # Update to version 3 of actions/checkout
       - name: Verify DB connection
         env:
           PORT: 33306
@@ -51,4 +51,3 @@ jobs:
           MYSQL_USER: 'root'
           MYSQL_PASSWORD: 'password'
           MYSQL_DATABASE: 'test'
-
