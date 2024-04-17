@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import logo from './logo.svg';
 import { Typography, TextField, Button } from '@mui/material';
 import './LandingPage.css';
+import { useTeamIdContext } from '../../hooks/contextHook';
 
 export const LandingPageContainer = () => {
-  const [teamCode, setTeamCode] = useState('');
+  const { teamId: globalTeamId, setTeamId: setGlobalTeamId } =
+    useTeamIdContext();
+  const [teamId, setTeamId] = useState(globalTeamId);
   const [loginStatus, setLoginStatus] = useState(null);
   const navigate = useNavigate();
 
@@ -19,7 +22,7 @@ export const LandingPageContainer = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ team_code: teamCode }),
+        body: JSON.stringify({ team_code: teamId }),
       });
 
       if (!response.ok) {
@@ -27,7 +30,9 @@ export const LandingPageContainer = () => {
       }
 
       setLoginStatus('success');
-      navigate('/dashboard');
+      // Save team id if it the login was successful
+      setGlobalTeamId(teamId);
+      navigate('/dashboard/');
     } catch (error) {
       setLoginStatus('failure');
     }
@@ -60,8 +65,8 @@ export const LandingPageContainer = () => {
               type="password"
               variant="outlined"
               size="small"
-              value={teamCode}
-              onChange={(e) => setTeamCode(e.target.value)}
+              value={teamId}
+              onChange={(e) => setTeamId(e.target.value)}
               required
             />
             <Button

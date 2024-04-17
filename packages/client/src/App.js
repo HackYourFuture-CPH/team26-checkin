@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './containers/Dashboard/Dashboard';
@@ -8,19 +7,22 @@ import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
 // TODO: put back comment after the Dashboard backend flow is down
 // import { Dashboard }from './containers/Dashboard/Dashboard';
 import { CheckinQuestions } from './containers/LandingPage/CheckinQuestionsPage/CheckinQuestions';
+import { TeamIdContextProvider } from './hooks/contextHook';
 
 function App() {
   return (
     <div className="app">
-      <Router>
-        <Routes>
-          {/* TODO: put back comment after the login flow is down */}
-          {/* <Route path="/" element={<LandingPageContainer />} /> */}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/questions" element={<CheckinQuestions />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </Router>
+      <TeamIdContextProvider>
+        <Router>
+          <Routes>
+            {/* TODO: put back comment after the login flow is down */}
+            {/* <Route path="/" element={<LandingPageContainer />} /> */}
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/questions" element={<CheckinQuestions />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </Router>
+      </TeamIdContextProvider>
     </div>
   );
 }
