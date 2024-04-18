@@ -1,11 +1,9 @@
-/* eslint-disable */
-
 import React, { useEffect, useState } from 'react';
 import { apiURL } from '../../apiURL';
 import { AddTeamMemberModal } from '../../containers/LandingPage/AddTeamMemberModal';
-import { Typography, IconButton, Button } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Typography, Button } from '@mui/material';
+import TeamMemberListItem from './TeamMemberListItem';
+import EditingMember from './EditingMember'; // Import the newly created component
 
 const TeamMembers = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -62,6 +60,10 @@ const TeamMembers = () => {
   };
 
   const handleAddMember = async () => {
+    if (!newMemberFirstName || !newMemberLastName) {
+      alert('Please enter both first name and last name.');
+      return;
+    }
     try {
       const response = await fetch(`${apiURL()}/teamMembers/addMember`, {
         method: 'POST',
@@ -78,6 +80,8 @@ const TeamMembers = () => {
       }
       fetchTeamMembers();
       setShowAddModal(false);
+      setNewMemberFirstName('');
+      setNewMemberLastName('');
     } catch (error) {
       console.error(error);
     }
@@ -116,7 +120,7 @@ const TeamMembers = () => {
         <Button
           type="button"
           variant="contained"
-          size="small"
+          size="big"
           onClick={() => setShowAddModal(true)}
         >
           Add Team Member
@@ -135,65 +139,26 @@ const TeamMembers = () => {
       </div>
 
       {editMemberId && (
-        <div className="edit-member-container">
-          <Typography variant="body1">Edit Member</Typography>
-          <div className="edit-member-details">
-            <div className="input-container">
-              <input
-                type="text"
-                value={editMemberFirstName}
-                onChange={(e) => setEditMemberFirstName(e.target.value)}
-                placeholder="First Name"
-              />
-              <input
-                type="text"
-                value={editMemberLastName}
-                onChange={(e) => setEditMemberLastName(e.target.value)}
-                placeholder="Last Name"
-              />
-            </div>
-            <div className="button-container">
-              <button
-                className="save-button"
-                type="button"
-                onClick={handleEditSave}
-              >
-                Save
-              </button>
-              <button
-                className="cancel-button"
-                type="button"
-                onClick={() => setEditMemberId(null)}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
+        <EditingMember
+          editMemberId={editMemberId}
+          editMemberFirstName={editMemberFirstName}
+          editMemberLastName={editMemberLastName}
+          setEditMemberFirstName={setEditMemberFirstName}
+          setEditMemberLastName={setEditMemberLastName}
+          handleEditSave={handleEditSave}
+          setEditMemberId={setEditMemberId}
+        />
       )}
 
       <div>
         <ul>
           {teamMembers.map((member) => (
-            <li key={member.member_id}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div style={{ flexGrow: 1 }}>
-                  {member.first_name} {member.last_name}
-                </div>
-                <div>
-                  <IconButton
-                    onClick={() => handleEditMember(member.member_id)}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton
-                    onClick={() => handleDeleteMember(member.member_id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </div>
-              </div>
-            </li>
+            <TeamMemberListItem
+              key={member.member_id}
+              member={member}
+              handleEditMember={handleEditMember}
+              handleDeleteMember={handleDeleteMember}
+            />
           ))}
         </ul>
       </div>

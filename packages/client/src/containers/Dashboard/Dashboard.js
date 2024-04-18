@@ -36,9 +36,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div>
-          <TeamMembers />
-        </div>
+        <TeamMembers />
       </div>
     </div>
   );

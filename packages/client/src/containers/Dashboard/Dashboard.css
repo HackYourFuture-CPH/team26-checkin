@@ -183,90 +183,48 @@ body {
   margin-top: 0px;
   margin-bottom: 20px;
 }
+
 .edit-member-container {
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
   background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 20px 20px;
+  border: #8a8a8a 1px solid;
 }
 
-.edit-member-container h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #333;
+.edit-member-heading {
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
-
-.edit-member-container input[type='text'] {
-  width: calc(100% - 20px); /* Adjust width to fit container padding */
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.edit-member-container button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.edit-member-container button:hover {
-  background-color: #0056b3;
-}
-
 .edit-member-details {
   display: flex;
-  flex-direction: row; /* Display as a column to align inputs and buttons vertically */
+  flex-direction: row;
   align-items: flex-start;
   width: 100%;
+  gap: 10px;
+  padding-bottom: 10px;
 }
 
 .input-container {
-  display: flex; /* Display inputs and buttons in a row */
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.edit-member-input {
   width: 100%;
 }
 
-.input-container input {
-  padding: 10px;
-  margin-right: 10px;
-}
-
 .button-container {
-  display: flex; /* Display buttons in a row */
-  margin-top: 0px; /* Add margin-top to separate buttons from inputs */
+  display: flex;
+  margin-top: 0px;
+  gap: 10px;
 }
 
 .button-container button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px; /* Add margin-right to separate buttons */
-}
-
-.button-container .cancel-button {
-  background-color: #f0f0f0;
-  color: #333;
-}
-.button-container .cancel-button:hover {
-  background-color: #ddd;
-}
-
-.button-container .save-button:hover {
-  background-color: #007bff;
-  color: white;
-}
-
-.button-container .save-button:hover {
-  background-color: #0056b3;
-}
-
-.team-members-heading-container button {
-  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
 }
