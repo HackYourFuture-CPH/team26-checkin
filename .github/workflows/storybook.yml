@@ -20,4 +20,4 @@ jobs:
         env:
           CI: true
       - name: Run Storybook
-        run: yarn workspace client run storybook -- --ci --smoke-test --quiet
+        run: yarn workspace client run storybook --ci --smoke-test --quiet # Removed unnecessary '--' before options

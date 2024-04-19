@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 export const EditMemberModal = ({
   showEditModal,
-  editMemberId,
   editMemberFirstName,
   setEditMemberFirstName,
   editMemberLastName,
@@ -37,7 +36,6 @@ export const EditMemberModal = ({
 
 EditMemberModal.propTypes = {
   showEditModal: PropTypes.bool.isRequired,
-  editMemberId: PropTypes.string.isRequired,
   editMemberFirstName: PropTypes.string.isRequired,
   setEditMemberFirstName: PropTypes.func.isRequired,
   editMemberLastName: PropTypes.string.isRequired,
