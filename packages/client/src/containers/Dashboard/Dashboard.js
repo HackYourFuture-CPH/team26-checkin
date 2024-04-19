@@ -3,12 +3,13 @@ import { Typography } from '@mui/material';
 import NavigationBar from '../../components/Dashboard/NavigationBar';
 import placeholder from './placeholder.png';
 import './Dashboard.css';
+import { TeamMembers } from '../../components/Dashboard/TeamMembers';
+import logo from './logo-dark.svg';
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <NavigationBar />
-
       <div className="content-container">
         <div className="top-nav-bar">
           <div className="heading-text">
@@ -32,6 +33,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        <TeamMembers />
       </div>
     </div>
   );

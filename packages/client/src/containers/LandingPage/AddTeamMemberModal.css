@@ -1,0 +1,19 @@
+/* AddTeamMemberModal.css */
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-member {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.add-member > * {
+  width: 100%;
+}
