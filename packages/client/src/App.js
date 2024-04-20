@@ -3,7 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './containers/Dashboard/Dashboard';
 // import { LandingPageContainer } from './containers/LandingPage/LandingPage';
-import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
+// import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
+import { CheckinQuestions } from './containers/QuestionPage/CheckinQuestions';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<LandingPageContainer />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/questions" element={<CheckinQuestions />} />
+
+          {/* <Route path="*" element={<PageNotFound />} /> */}
         </Routes>
       </Router>
     </div>
