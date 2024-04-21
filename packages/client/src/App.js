@@ -5,6 +5,7 @@ import { LandingPageContainer } from './containers/LandingPage/LandingPage';
 import { PageNotFound } from './containers/PageNotFound/PageNotFound';
 import { CheckinQuestions } from './containers/Dashboard/CheckinQuestionsPage/CheckinQuestions';
 import { TeamIdContextProvider } from './hooks/contextHook';
+import { ReportPage } from './containers/ReportPage/ReportPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<LandingPageContainer />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/questions" element={<CheckinQuestions />} />
+            <Route path="/reportpage" element={<ReportPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Router>
