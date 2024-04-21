@@ -6,6 +6,7 @@ import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import logo from './logo-dark.svg';
+import './NavigationBar.css';
 
 const NavigationItem = ({ icon, name }) => (
   <div style={{ marginBottom: '20px' }}>
