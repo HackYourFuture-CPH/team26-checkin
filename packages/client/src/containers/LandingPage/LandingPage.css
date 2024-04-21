@@ -5,19 +5,13 @@
   --text-color: #fffff;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
+.landing-page {
   margin: 0;
   display: flex;
   justify-content: center; /* Horizontally center content */
   align-items: center; /* Vertically center content */
   height: 100vh; /* Set body height to full viewport height */
-  background: var(--background-color);
+  background: #1d4ed8;
 }
 
 .landing-page {

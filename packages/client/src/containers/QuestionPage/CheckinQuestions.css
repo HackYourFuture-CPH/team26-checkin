@@ -16,11 +16,50 @@
 
 body {
   height: 100vh;
-  background-color: #f7f7f7;
+  background-color: var(--background-color);
 }
 
 .dashboard-container {
   display: flex;
+}
+
+.left-nav-bar-container {
+  display: flex;
+  padding: 40px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  flex-shrink: 0;
+  border-radius: 0px 40px 40px 0px;
+  background: var(--primary-color);
+}
+
+.left-nav-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.left-nav-bar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left-nav-bar-top .menu-icon:nth-child(1) {
+  color: white;
+}
+
+.menu-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18.204px;
+  flex: 1 0 0;
+  color: var(--fade-color);
 }
 
 .dashboard {
@@ -29,6 +68,11 @@ body {
 
 .fade {
   color: var(--fade-color);
+}
+
+.left-nav-bar-bottom {
+  display: flex;
+  align-items: center;
 }
 
 .content-container {
@@ -95,7 +139,7 @@ body {
   flex: 1 0 0;
 }
 
-.team-members-container {
+.question-list-container {
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
@@ -103,99 +147,67 @@ body {
   margin-right: 30px;
 }
 
-.teamMembers-heading {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Align the text to the left */
-  margin-bottom: 20px; /* Add margin for spacing */
-}
-
-.team-members-container ul {
-  list-style-type: none; /* Remove default list styles */
-  padding: 0; /* Remove default padding */
-  background: var(--primary-background-color);
-  padding: 20px;
-}
-
-.team-members-container ul li {
-  border-bottom: 1px solid #ccc; /* Add bottom border */
-  padding: 10px 0; /* Add padding top and bottom */
-}
-
-.team-members-container ul li:last-child {
-  border-bottom: none; /* Remove bottom border for the last item */
-}
-
-.member-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
-}
-
-.team-members-heading-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0px;
-}
-
-.add-member {
-  margin-top: 0px;
-  margin-bottom: 20px;
-}
-
-.edit-member-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  background-color: #fff;
-  padding: 20px;
-  border: #8a8a8a 1px solid;
-}
-
-.edit-member-heading {
-  padding-bottom: 20px;
+.question-list-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-}
-.edit-member-details {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
-  gap: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.input-container {
-  display: flex;
-  width: 100%;
-  gap: 10px;
+.question-list {
+  list-style-type: none;
+  background: var(--primary-background-color);
+  padding: 10px 20px;
 }
 
-.edit-member-input {
-  width: 100%;
+.question-item {
+  padding: 10px 0;
+}
+
+.question-item:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.question-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question-content .question-actions {
+  display: flex;
+  gap: 10px;
 }
 
 .button-container {
   display: flex;
-  margin-top: 0px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.modal-textfield {
+  margin-bottom: 10px;
+}
+
+.button-container-edit-question {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-}
-
-.button-container button {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.member-info-container {
-  display: flex;
-  align-items: center;
-}
-.member-info {
-  flex-grow: 1;
-  border: none;
 }
