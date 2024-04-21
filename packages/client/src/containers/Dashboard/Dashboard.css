@@ -16,7 +16,7 @@
 
 body {
   height: 100vh;
-  background-color: var(--background-color);
+  background-color: #f7f7f7;
 }
 
 .dashboard-container {
@@ -114,7 +114,7 @@ body {
   list-style-type: none; /* Remove default list styles */
   padding: 0; /* Remove default padding */
   background: var(--primary-background-color);
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
 }
 
 .team-members-container ul li {
@@ -151,7 +151,7 @@ body {
   flex-direction: column;
   margin-top: 20px;
   background-color: #fff;
-  padding: 20px 20px;
+  padding: 20px;
   border: #8a8a8a 1px solid;
 }
 
@@ -189,4 +189,13 @@ body {
 .button-container button {
   display: flex;
   justify-content: flex-end;
+}
+
+.member-info-container {
+  display: flex;
+  align-items: center;
+}
+.member-info {
+  flex-grow: 1;
+  border: none;
 }

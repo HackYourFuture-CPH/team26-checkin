@@ -4,8 +4,10 @@ import { AddTeamMemberModal } from '../../containers/LandingPage/AddTeamMemberMo
 import { Typography, Button } from '@mui/material';
 import TeamMemberListItem from './TeamMemberListItem';
 import EditingMember from './EditingMember'; // Import the newly created component
+import { useTeamIdContext } from '../../hooks/contextHook';
 
 const TeamMembers = () => {
+  const { teamId } = useTeamIdContext();
   const [teamMembers, setTeamMembers] = useState([]);
   const [editMemberId, setEditMemberId] = useState(null);
   const [editMemberFirstName, setEditMemberFirstName] = useState('');
@@ -20,7 +22,7 @@ const TeamMembers = () => {
 
   const fetchTeamMembers = async () => {
     try {
-      const response = await fetch(`${apiURL()}/teamMembers`);
+      const response = await fetch(`${apiURL()}/teamMembers/${teamId}/members`);
       if (!response.ok) {
         throw new Error('Failed to fetch team members');
       }
@@ -44,9 +46,12 @@ const TeamMembers = () => {
     );
     if (confirmDelete) {
       try {
-        const response = await fetch(`${apiURL()}/teamMembers/${id}`, {
-          method: 'DELETE',
-        });
+        const response = await fetch(
+          `${apiURL()}/teamMembers/${teamId}/members/${id}`,
+          {
+            method: 'DELETE',
+          },
+        );
         if (!response.ok) {
           throw new Error('Failed to delete team member');
         }
@@ -65,16 +70,19 @@ const TeamMembers = () => {
       return;
     }
     try {
-      const response = await fetch(`${apiURL()}/teamMembers/addMember`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${apiURL()}/teamMembers/${teamId}/members`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            first_name: newMemberFirstName,
+            last_name: newMemberLastName,
+          }),
         },
-        body: JSON.stringify({
-          first_name: newMemberFirstName,
-          last_name: newMemberLastName,
-        }),
-      });
+      );
       if (!response.ok) {
         throw new Error('Failed to add team member');
       }
@@ -89,16 +97,19 @@ const TeamMembers = () => {
 
   const handleEditSave = async () => {
     try {
-      const response = await fetch(`${apiURL()}/teamMembers/${editMemberId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${apiURL()}/teamMembers/${teamId}/members/${editMemberId}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            first_name: editMemberFirstName,
+            last_name: editMemberLastName,
+          }),
         },
-        body: JSON.stringify({
-          first_name: editMemberFirstName,
-          last_name: editMemberLastName,
-        }),
-      });
+      );
       if (!response.ok) {
         throw new Error('Failed to edit team member');
       }

@@ -16,18 +16,6 @@ export const AddTeamMemberModal = ({
     return null;
   }
 
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 350,
-    bgcolor: 'background.paper',
-    border: `none`,
-    boxShadow: 24,
-    p: 4,
-  };
-
   return (
     <Modal
       open={showAddModal}
@@ -35,7 +23,7 @@ export const AddTeamMemberModal = ({
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style} className="modal-container">
+      <Box className="modal-container">
         {' '}
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Add Team Member
