@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Typography, TextField, Button, Modal, Box } from '@mui/material';
+import './AddTeamMemberModal.css';
 
 export const AddTeamMemberModal = ({
   showAddModal,
@@ -13,28 +15,47 @@ export const AddTeamMemberModal = ({
   if (!showAddModal) {
     return null;
   }
+
   return (
-    <div>
-      <h2>Add Team Member</h2>
-      <input
-        type="text"
-        value={newMemberFirstName}
-        onChange={(e) => setNewMemberFirstName(e.target.value)}
-        placeholder="First Name"
-      />
-      <input
-        type="text"
-        value={newMemberLastName}
-        onChange={(e) => setNewMemberLastName(e.target.value)}
-        placeholder="Last Name"
-      />
-      <button type="button" onClick={handleAddMember}>
-        Add Member
-      </button>
-      <button type="button" onClick={() => setShowAddModal(false)}>
-        Cancel
-      </button>
-    </div>
+    <Modal
+      open={showAddModal}
+      onClose={() => setShowAddModal(false)}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box className="modal-container">
+        {' '}
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+          Add Team Member
+        </Typography>
+        <div className="add-member">
+          <TextField
+            id="outlined-basic"
+            label="First Name"
+            variant="outlined"
+            type="text"
+            value={newMemberFirstName}
+            onChange={(e) => setNewMemberFirstName(e.target.value)}
+            placeholder="First Name"
+          />
+          <TextField
+            id="outlined-basic"
+            label="Last Name"
+            variant="outlined"
+            type="text"
+            value={newMemberLastName}
+            onChange={(e) => setNewMemberLastName(e.target.value)}
+            placeholder="Last Name"
+          />
+          <Button variant="contained" onClick={handleAddMember}>
+            Add
+          </Button>
+          <Button variant="outlined" onClick={() => setShowAddModal(false)}>
+            Cancel
+          </Button>
+        </div>
+      </Box>
+    </Modal>
   );
 };
 
