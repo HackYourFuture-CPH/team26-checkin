@@ -4,7 +4,7 @@ import NavigationBar from '../../components/Dashboard/NavigationBar';
 import placeholder from './placeholder.png';
 import './Dashboard.css';
 import { TeamMembers } from '../../components/Dashboard/TeamMembers';
-import logo from './logo-dark.svg';
+// import logo from './logo-dark.svg';
 
 const Dashboard = () => {
   return (

@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './containers/Dashboard/Dashboard';
 // TODO: put back comment after the login flow is down
 // import { LandingPageContainer } from './containers/LandingPage/LandingPage';
-import { PageNotFound } from './containers/PageNotFound/PageNotFound.Container';
+import { PageNotFound } from './containers/PageNotFound/PageNotFound';
 import { CheckinQuestions } from './containers/LandingPage/CheckinQuestionsPage/CheckinQuestions';
 import { TeamIdContextProvider } from './hooks/contextHook';
+// import ReportPage  from './containers/CheckinReportPage/CheckinReportPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/questions" element={<CheckinQuestions />} />
             <Route path="*" element={<PageNotFound />} />
+            {/* <Route path="/report" component={ReportPage} /> */}
           </Routes>
         </Router>
       </TeamIdContextProvider>
