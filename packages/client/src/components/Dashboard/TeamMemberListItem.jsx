@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Dashboard from '../../containers/Dashboard/Dashboard';
 
 const TeamMemberListItem = ({
   member,
@@ -11,8 +12,8 @@ const TeamMemberListItem = ({
 }) => {
   return (
     <li key={member.member_id}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div style={{ flexGrow: 1 }}>
+      <div className="member-info-container">
+        <div className="member-info">
           {member.first_name} {member.last_name}
         </div>
         <div>

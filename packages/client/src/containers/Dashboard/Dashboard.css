@@ -16,7 +16,7 @@
 
 body {
   height: 100vh;
-  background-color: var(--background-color);
+  background-color: #f7f7f7;
 }
 
 .dashboard-container {
@@ -233,4 +233,13 @@ body {
 .button-container button {
   display: flex;
   justify-content: flex-end;
+}
+
+.member-info-container {
+  display: flex;
+  align-items: center;
+}
+.member-info {
+  flex-grow: 1;
+  border: none;
 }
