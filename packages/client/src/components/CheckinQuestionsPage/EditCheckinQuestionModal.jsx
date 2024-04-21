@@ -25,10 +25,6 @@ const EditCheckinQuestionModal = ({
     return null;
   }
 
-  const handleCancel = () => {
-    handleClose();
-  };
-
   return (
     <Modal
       open={showEditModal}
@@ -61,7 +57,7 @@ const EditCheckinQuestionModal = ({
           >
             Save
           </Button>
-          <Button variant="outlined" onClick={handleCancel}>
+          <Button variant="outlined" onClick={handleClose}>
             Cancel
           </Button>
         </Box>
