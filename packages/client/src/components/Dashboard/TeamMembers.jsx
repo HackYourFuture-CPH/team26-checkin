@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { apiURL } from '../../apiURL';
 import { AddTeamMemberModal } from '../../containers/LandingPage/AddTeamMemberModal';
 import { Typography, Button } from '@mui/material';
@@ -16,11 +16,7 @@ const TeamMembers = () => {
   const [newMemberLastName, setNewMemberLastName] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
 
-  useEffect(() => {
-    fetchTeamMembers();
-  }, []);
-
-  const fetchTeamMembers = async () => {
+  const fetchTeamMembers = useCallback(async () => {
     try {
       const response = await fetch(`${apiURL()}/teamMembers/${teamId}/members`);
       if (!response.ok) {
@@ -31,7 +27,11 @@ const TeamMembers = () => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [teamId]); // Include teamId in the dependency array for useCallback
+
+  useEffect(() => {
+    fetchTeamMembers();
+  }, [fetchTeamMembers]); // Include fetchTeamMembers in the dependency array for useEffect
 
   const handleEditMember = (id) => {
     setEditMemberId(id);
