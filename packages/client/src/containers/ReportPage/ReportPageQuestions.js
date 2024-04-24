@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { apiURL } from '../../apiURL';
-import { useTeamIdContext } from '../../hooks/contextHook';
+import { apiURL } from '../../apiURL.js';
+import { useTeamIdContext } from '../../hooks/contextHook.js';
+import { Button, Typography } from '@mui/material';
+import './ReportPageQuestions.css';
+import CustomTextField from '../../components/ReportPage/ReportTextField.jsx'; // Import the custom text field component
 
-const ReportPage = () => {
+const ReportPageQuestions = () => {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
   const [loading, setLoading] = useState(true);
@@ -80,27 +83,38 @@ const ReportPage = () => {
   );
 
   return (
-    <div>
-      <h2>Check-in Questions</h2>
-      {questions.map((question) => (
-        <div key={question.question_id}>
-          <p>{question.question_text}</p>
-          <textarea
-            placeholder="Your response"
-            value={responses[question.question_id]}
-            onChange={(e) =>
-              handleResponseChange(question.question_id, e.target.value)
-            }
-            rows="2"
-            style={{ width: '100%', marginBottom: '10px' }}
-          />
-        </div>
-      ))}
-      <button onClick={handleSubmit} disabled={loading || isSubmitDisabled}>
-        {loading ? 'Submitting...' : 'Submit'}
-      </button>
+    <div className="report-container">
+      <Typography variant="h5" style={{ fontWeight: 'bold' }}>
+        Check-in Questions
+      </Typography>
+      <div className="report-questions-container">
+        {questions.map((question, index) => (
+          <div className="questions-container" key={question.question_id}>
+            <Typography className="question-text" variant="body1">{`${
+              index + 1
+            }. ${question.question_text}`}</Typography>
+            <CustomTextField
+              className="text-field"
+              value={responses[question.question_id]}
+              onChange={(value) =>
+                handleResponseChange(question.question_id, value)
+              }
+            />
+          </div>
+        ))}
+      </div>
+
+      <Button
+        type="button"
+        variant="contained"
+        size="big"
+        onClick={handleSubmit}
+        disabled={loading || isSubmitDisabled}
+      >
+        {loading ? 'Submitting...' : 'Finish'}
+      </Button>
     </div>
   );
 };
 
-export { ReportPage };
+export { ReportPageQuestions };
