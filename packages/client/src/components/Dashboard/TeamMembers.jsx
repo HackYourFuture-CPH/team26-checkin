@@ -3,7 +3,7 @@ import { apiURL } from '../../apiURL';
 import { AddTeamMemberModal } from '../../containers/LandingPage/AddTeamMemberModal';
 import { Typography, Button } from '@mui/material';
 import TeamMemberListItem from './TeamMemberListItem';
-import EditingMember from './EditingMember'; // Import the newly created component
+import EditingMember from './EditingMember';
 import { useTeamIdContext } from '../../hooks/contextHook';
 
 const TeamMembers = () => {
@@ -27,11 +27,18 @@ const TeamMembers = () => {
     } catch (error) {
       console.error(error);
     }
+  }, [teamId]);
+
+  useEffect(() => {
+    fetchTeamMembers();
+  }, [fetchTeamMembers]);
+
   }, [teamId]); // Include teamId in the dependency array for useCallback
 
   useEffect(() => {
     fetchTeamMembers();
   }, [fetchTeamMembers]); // Include fetchTeamMembers in the dependency array for useEffect
+>
 
   const handleEditMember = (id) => {
     setEditMemberId(id);
