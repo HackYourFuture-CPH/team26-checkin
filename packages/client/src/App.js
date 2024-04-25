@@ -5,7 +5,8 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import { LandingPageContainer } from './containers/LandingPage/LandingPage';
 import { CheckinQuestions } from './containers/QuestionPage/CheckinQuestions';
 import { TeamIdContextProvider } from './hooks/contextHook';
-import ReportPage from './containers/ReportPage/ReportPage';
+import { ReportPage } from './containers/ReportPage/ReportPage';
+import { PageNotFound } from './containers/PageNotFound/PageNotFound';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/questions" element={<CheckinQuestions />} />
             <Route path="/reportpage" element={<ReportPage />} />
-            {/* <Route path="*" element={<PageNotFound />} /> */}
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Router>
       </TeamIdContextProvider>

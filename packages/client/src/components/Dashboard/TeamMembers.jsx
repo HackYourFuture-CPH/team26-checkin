@@ -33,6 +33,13 @@ const TeamMembers = () => {
     fetchTeamMembers();
   }, [fetchTeamMembers]);
 
+  }, [teamId]); // Include teamId in the dependency array for useCallback
+
+  useEffect(() => {
+    fetchTeamMembers();
+  }, [fetchTeamMembers]); // Include fetchTeamMembers in the dependency array for useEffect
+>
+
   const handleEditMember = (id) => {
     setEditMemberId(id);
     const memberToEdit = teamMembers.find((member) => member.member_id === id);
