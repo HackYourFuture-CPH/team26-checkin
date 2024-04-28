@@ -58,7 +58,7 @@ INSERT INTO CheckinQuestions (team_id, question_text, frequency, next_due_date) 
 (2, 'Would you like to pair on something?', 'weekly', NOW() + INTERVAL 1 WEEK);
 -- Insert sample data into CheckinResponses
 INSERT INTO CheckinResponses (question_id, member_id, response_text) VALUES
-(1, 1, 'Feeling good!'),
+(1, 1, 'Feeling good!!'),
 (1, 2, 'Could be better.'),
 (2, 3, 'Had a productive day yesterday.'),
 (4, 5, 'Yes, I need help with a bug.'),
