@@ -6,11 +6,6 @@ const teamMembersRouter = require('./teamMembers.router');
 const checkinQuestionsRouter = require('./checkinQuestions.router');
 const checkinResponsesRouter = require('./checkinResponses.router');
 
-// Home route
-router.get('/', (req, res) => {
-  res.send('Welcome to the home page!');
-});
-
 // Include your teams router
 router.use('/teams', teams);
 router.use('/teamMembers', teamMembersRouter);
