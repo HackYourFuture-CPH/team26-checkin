@@ -1,51 +1,69 @@
-# HYF Final project boilerplate
+# Team26 Check-In Application
 
-## Setup instructions
+Team26 Check-In is a modern web application designed to facilitate asynchronous team updates, ideal for remote teams working across different time zones. It provides a streamlined approach to team check-ins, enabling members to provide updates at their convenience.
 
-You can either choose to install the project using a Docker container that comes prepared with the project or you can install your database manually:
 
-### With Docker
+## Features
 
-1. Install Docker from docker.com
-2. Clone this repository
-3. Run `yarn install` in the root of the folder to install the dependencies.
-4. cd into the `/packages/server` folder.
-5. Copy and rename the `.env.example` file so it is calle `.env`: `cp .env.example .env`.
-6. (Optional) update the credentials in the newly created `.env`. If you skip this step everything should work, but your database will have a generic name and user.
-7. Run this command to build a database with Docker: `docker compose up -d`. The database will be built based on the values in `.env`.
-8. Run `yarn db:setup` to run example migrations and seeds.
-9. Run `yarn dev` to start the server in development mode.
-10. Navigate to http://localhost:5001/api/teams to verify that the API works and you can read data from the database.
+- **User-Friendly Interface**: A clean and intuitive user interface that makes it easy for team members to navigate and use the application.
+- **Team Member Management**: Add and manage team members with ease.
+- **Check-In Questions**: Create and manage check-in questions that can be customized to fit the team’s needs.
+- **Interactive Dashboard**: A centralized dashboard where team members can view and respond to check-in questions.
+- **Reporting**: Access past check-ins for insights into team progress and to maintain accountability.
 
-### Or without Docker
 
-1. Install Mysql manually and set up a database dedicated to the project.
-2. Clone this repository and cd into the `/packages/server` folder.
-3. Copy and rename the `.env.example` file so it is calle `.env`: `cp .env.example .env`.
-4. Update the credentials in the newly created `.env` and make sure everything matches with the credentials for the database you set up in step (1).
-5. Run `yarn db:setup` to run example migrations and seeds.
-6. Run `yarn dev` to start the server in development mode.
-7. Navigate to http://localhost:5001/api/teams to verify that the API works and you can read data from the database.
+## Getting Started
 
-## Yarn commands
+### Prerequisites
 
-NPM commands are replaced with Yarn which provides a faster experience and better organisation of dependencies. Avoid running any `npm` commands. Below are the most frequently used commands with `yarn`.
+- A modern web browser.
+- An internet connection.
 
-The project is organised as a mono-repository, meaning there is a single project containing a root and two projects (client and server). Remember to keep in mind where you are when running these commands.
+### Usage Instructions
 
-| Command                                | Description                                                                                             | Scope                | Example                       |     |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------- | --- |
-| `yarn workspaces [command]`            | Run a given command in all workspaces.                                                                  | root                 | `yarn workspaces start`       |     |
-| `yarn workspace [workspace] [command]` | Run a given command in a dedicated workspace.                                                           | root                 | `yarn workspace client start` |     |
-| `yarn` or `yarn install`               | Equivalent to `npm install`                                                                             | all                  |                               |     |
-| `yarn add [package]`                   | Equivalent to `npm install [package]`                                                                   | all                  |                               |     |
-| `yarn validate`                        | Will check if prettier and eslint have been applied correctly to all workspaces.                        | root                 |                               |     |
-| `yarn format`                          | Will run Prettier with the write flag. Only works in the root scope.                                    | root                 |                               |     |
-| `yarn format:check`                    | Will run Prettier non-destructively and verify if changes have been applied correctly.                  |                      |                               |     |
-| `yarn lint`                            | Will run Eslint. Can be run in all scopes.                                                              | root, client, server |                               |     |
-| `yarn knex`                            | Allows you to run knex commands. Can be run from root or server, but will always operate on the server. | root, server         |                               |     |
-| `yarn storybook`                       | Runs storybook.                                                                                         | client               |                               |     |
-| `yarn start`                           | Will start either the client or the server.                                                             | client, server       |                               |     |
-| `yarn build`                           | Will build a production ready React project.                                                            | client               |                               |     |
-| `yarn storybook-build`                 | Will build a production ready Storybook project.                                                        | client               |                               |     |
-|                                        |                                                                                                         |                      |                               |     |
+1. **Log In**: Start by entering your unique team code on the login page to gain access to your team's dashboard.
+
+2. **Dashboard Overview**: The dashboard provides a snapshot of team activities and a navigation menu to access different features of the application.
+
+3. **Managing Team Members**: Add new team members using the 'Add Team Member' button. Existing team members can be edited or removed using the action icons next to their names.
+
+4. **Check-In Questions**: Create, respond to, and manage check-in questions from the 'Questions' tab. You have the flexibility to edit or delete any question as required by the team's needs.
+
+5. **Editing and Deleting**: Every entry for team members and questions comes with options to edit or delete, ensuring you can manage your team's information and queries effectively. Just click on the appropriate icon next to an entry to make changes or remove it.
+
+
+
+
+https://github.com/HackYourFuture-CPH/team26-checkin/assets/127700012/ae41661a-1682-4d8a-bbd5-12ebf9f2ed8b
+
+s-page-screenshot.png)
+
+## Technologies Used
+
+This project is built with a number of modern technologies and tools that ensure efficient performance and scalability:
+
+- **Frontend**:
+  - **React.js**: A JavaScript library for building user interfaces.
+  - **CSS**: For styling and layout of the web pages.
+
+- **Backend**:
+  - **Node.js**: JavaScript runtime for building the server-side of the app.
+  - **Express.js**: A web application framework for Node.js.
+  - **mySQL**: Used for database
+
+
+**Development Tools**:
+  - **.nvmrc**: Specifies the Node.js version to ensure consistent environments across different machines.
+  - **.prettierignore & .prettierrc**: Configuration files for Prettier, a code formatter that ensures consistent code style.
+  - **.stylelintrc.json**: Configuration for stylelint, a tool to help avoid errors and enforce conventions in stylesheets.
+  - **Procfile**: Used for declaring what commands are run by the application’s dynos on the Heroku platform.
+  - **Yarn**: For dependency management, utilizing `yarn.lock` to lock in specific versions of dependencies.
+
+
+## Installation
+
+This section is intended for developers interested in setting up the application locally.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/HackYourFuture-CPH/team26-checkin.git
