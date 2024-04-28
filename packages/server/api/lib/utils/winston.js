@@ -41,16 +41,6 @@ const customFormat = combine(
 );
 
 const options = {
-  file: {
-    level: 'info',
-    filename: `${appRoot}/logs/app.log`,
-    handleExceptions: true,
-    json: true,
-    maxsize: 5242880, // 5MB
-    maxFiles: 5,
-    colorize: false,
-    format: customFormat,
-  },
   console: {
     level: 'debug',
     handleExceptions: true,
@@ -61,10 +51,7 @@ const options = {
 };
 
 const logger = createLogger({
-  transports: [
-    new transports.File(options.file),
-    new transports.Console(options.console),
-  ],
+  transports: [new transports.Console(options.console)],
   exitOnError: false, // do not exit on handled exceptions
 });
 
