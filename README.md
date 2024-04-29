@@ -1,51 +1,53 @@
-# HYF Final project boilerplate
+### Usage Instructions
 
-## Setup instructions
+1. **Log In**: Start by entering your unique team code on the login page to gain access to your team's dashboard.
 
-You can either choose to install the project using a Docker container that comes prepared with the project or you can install your database manually:
 
-### With Docker
+2. **Dashboard Overview**: The dashboard provides a snapshot of team activities and a navigation menu to access different features of the application.
 
-1. Install Docker from docker.com
-2. Clone this repository
-3. Run `yarn install` in the root of the folder to install the dependencies.
-4. cd into the `/packages/server` folder.
-5. Copy and rename the `.env.example` file so it is calle `.env`: `cp .env.example .env`.
-6. (Optional) update the credentials in the newly created `.env`. If you skip this step everything should work, but your database will have a generic name and user.
-7. Run this command to build a database with Docker: `docker compose up -d`. The database will be built based on the values in `.env`.
-8. Run `yarn db:setup` to run example migrations and seeds.
-9. Run `yarn dev` to start the server in development mode.
-10. Navigate to http://localhost:5001/api/teams to verify that the API works and you can read data from the database.
 
-### Or without Docker
+3. **Managing Team Members**: Add new team members using the 'Add Team Member' button. Existing team members can be edited or removed using the action icons next to their names.
 
-1. Install Mysql manually and set up a database dedicated to the project.
-2. Clone this repository and cd into the `/packages/server` folder.
-3. Copy and rename the `.env.example` file so it is calle `.env`: `cp .env.example .env`.
-4. Update the credentials in the newly created `.env` and make sure everything matches with the credentials for the database you set up in step (1).
-5. Run `yarn db:setup` to run example migrations and seeds.
-6. Run `yarn dev` to start the server in development mode.
-7. Navigate to http://localhost:5001/api/teams to verify that the API works and you can read data from the database.
+ ![Login and Dashbord](https://github.com/HackYourFuture-CPH/team26-checkin/assets/127700012/9e2703b3-d2e2-4ca1-b97e-35ec36311de1)
 
-## Yarn commands
+4. **Check-In Questions**: Create, respond to, and manage check-in questions from the 'Questions' tab. You have the flexibility to edit or delete any question as required by the team's needs.
 
-NPM commands are replaced with Yarn which provides a faster experience and better organisation of dependencies. Avoid running any `npm` commands. Below are the most frequently used commands with `yarn`.
+5. **Editing and Deleting**: Every entry for team members and questions comes with options to edit or delete, ensuring you can manage your team's information and queries effectively. Just click on the appropriate icon next to an entry to make changes or remove it.
 
-The project is organised as a mono-repository, meaning there is a single project containing a root and two projects (client and server). Remember to keep in mind where you are when running these commands.
+(![Question](https://github.com/HackYourFuture-CPH/team26-checkin/assets/127700012/f8c6a4a0-08fb-4437-a82b-29d34ba3c17d)
+)
 
-| Command                                | Description                                                                                             | Scope                | Example                       |     |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------- | --- |
-| `yarn workspaces [command]`            | Run a given command in all workspaces.                                                                  | root                 | `yarn workspaces start`       |     |
-| `yarn workspace [workspace] [command]` | Run a given command in a dedicated workspace.                                                           | root                 | `yarn workspace client start` |     |
-| `yarn` or `yarn install`               | Equivalent to `npm install`                                                                             | all                  |                               |     |
-| `yarn add [package]`                   | Equivalent to `npm install [package]`                                                                   | all                  |                               |     |
-| `yarn validate`                        | Will check if prettier and eslint have been applied correctly to all workspaces.                        | root                 |                               |     |
-| `yarn format`                          | Will run Prettier with the write flag. Only works in the root scope.                                    | root                 |                               |     |
-| `yarn format:check`                    | Will run Prettier non-destructively and verify if changes have been applied correctly.                  |                      |                               |     |
-| `yarn lint`                            | Will run Eslint. Can be run in all scopes.                                                              | root, client, server |                               |     |
-| `yarn knex`                            | Allows you to run knex commands. Can be run from root or server, but will always operate on the server. | root, server         |                               |     |
-| `yarn storybook`                       | Runs storybook.                                                                                         | client               |                               |     |
-| `yarn start`                           | Will start either the client or the server.                                                             | client, server       |                               |     |
-| `yarn build`                           | Will build a production ready React project.                                                            | client               |                               |     |
-| `yarn storybook-build`                 | Will build a production ready Storybook project.                                                        | client               |                               |     |
-|                                        |                                                                                                         |                      |                               |     |
+6. **Report Page**: Receiving Check-In Questions: This page provides responses to the check-in questions.
+Responding: Each response can be reviewed and answered, allowing for tracking of individual and team progress over time.
+
+![03-Report](https://github.com/HackYourFuture-CPH/team26-checkin/assets/127700012/44dccee9-4048-4641-9c3b-2b53cda70759)
+
+
+## Technologies Used:
+
+### Frontend:
+- **React:** Used to build the user interface of the report page, providing a responsive and interactive design.
+- **CSS:** For styling the application's layout and components.
+
+### Backend:
+- **Node.js:** Provides the backend framework, handling server-side logic and data processing.
+- **Express:** A web framework built on Node.js, managing routes and APIs.
+
+### Database:
+- **MySQL:** Stores team members, check-in questions, and responses, providing efficient relational data management.
+
+### APIs:
+- **RESTful API:** Provides a standard way for the frontend to interact with the backend, facilitating the creation, retrieval, update, and deletion (CRUD) of resources.
+- **Custom APIs:** Allow for seamless communication between the frontend and backend, managing data flow and operations.
+
+### Other Tools:
+- **Git:** For version control, facilitating collaborative development.
+- **Yarn:** Manages dependencies and packages used in the project, providing a streamlined workflow.
+
+## Installation
+
+This section is intended for developers interested in setting up the application locally.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/HackYourFuture-CPH/team26-checkin.git
